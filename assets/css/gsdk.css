@@ -142,13 +142,13 @@ body{
 
 .tempsensor1{
     position: fixed;
-    top: 830px;
+    top: 810px;
     left: 1100px;
     z-index: 2;
 }
 .tempsensor2{
     position: fixed;
-    top: 830px;
+    top: 810px;
     left: 815px;
     z-index: 2;
 }
@@ -252,7 +252,7 @@ body{
 
 .hcmute{
     position: fixed;
-    top: 270px;
+    top: 250px;
     left: 790px;
     z-index: 1;
 }
@@ -280,7 +280,7 @@ body{
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: fixed;
-    top: 830px;
+    top: 810px;
     left: 610px;
 }
 
@@ -294,7 +294,7 @@ body{
     border-radius: 9px;
     border: 2px solid blue;
     position: fixed;
-    top: 850px;
+    top: 830px;
     left: 445px;
 }
 
@@ -311,7 +311,7 @@ body{
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: fixed;
-    top: 830px;
+    top: 810px;
     left: 1267px;
 }
 
@@ -324,7 +324,7 @@ body{
     border-radius: 9px;
     border: 2px solid blue;
     position: fixed;
-    top: 850px;
+    top: 830px;
     left: 585px;
 }
 
@@ -439,7 +439,7 @@ body{
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: fixed;
-    top: 660px;
+    top: 640px;
     left: 1267px;
 }
 
@@ -463,7 +463,7 @@ body{
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: fixed;
-    top: 660px;
+    top: 640px;
     left: 610px;
 }
 

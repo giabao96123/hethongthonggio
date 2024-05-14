@@ -1,0 +1,145 @@
+/*reset CSS*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*vị trí - kích thước (chiều rộng- chiều cao)- màu sắc- kiểu chữ- hình dạng*/
+
+html{
+    font-family: Arial, Helvetica, sans-serif; /* kiểu chữ */
+    scroll-behavior: smooth;
+} 
+
+#main {
+    
+}
+
+#header {
+    height: 70px;
+    background-color: #074c95;
+}
+
+#nav li{
+    display: inline-block; /* viết ngang*/
+}
+
+#nav li a {
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    line-height: 70px;
+    padding: 0px 24px 0px 24px;
+    display: inline-block;
+    text-transform: uppercase; /* viết hoa*/
+}
+
+#nav li a:hover {
+    color: #fffc1e;
+    background-color: darkblue;
+}
+
+#content {
+    background-image: url('https://png.pngtree.com/background/20210711/original/pngtree-minimalistic-blue-honeycomb-technology-background-picture-image_1085284.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw; /* Đảm bảo hình ảnh nền sẽ lấp đầy toàn bộ kích thước của trang */
+    justify-content: center;
+    
+}
+
+#content .header2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content .text{
+    margin-right: 50px;
+    margin-left: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+#content .fan{
+    width: 250px;
+    height: 308px;
+    background-color: #074c95;
+    margin-top: 0px;
+    margin-left: 50px;
+    border-radius: 25px;   
+}
+
+#content .valve{
+    width: 250px;
+    height: 256px;
+    background-color: #074c95;
+    margin-top: 0px;
+    margin-left: 50px;
+    border-radius: 25px;   
+}
+
+#content .filter{
+    width: 250px;
+    height: 204px;
+    background-color: #074c95;
+    margin-top: 0px;
+    margin-left: 50px;
+    border-radius: 25px;   
+}
+
+#content .chiller{
+    width: 250px;
+    height: 256px;
+    background-color: #074c95;
+    margin-top: 0px;
+    margin-left: 50px;
+    border-radius: 25px;   
+}
+
+#content .sensor-tem{
+    width: 400px;
+    height: 204px;
+    background-color: #074c95;
+    margin-top: 0px;
+    margin-left: 50px;
+    border-radius: 25px;   
+}
+
+#content .sensor-pre{
+    width: 400px;
+    height: 204px;
+    background-color: #074c95;
+    margin-top: 0px;
+    margin-left: 50px;
+    border-radius: 25px;   
+}
+
+#content .giamsat li{
+    color: white;
+    font-size: 25px;
+    padding: 11px 16px;
+    border-bottom: 1px solid white;
+}
+
+.giamsat .thongso{
+    list-style: none;
+    border-radius: 5px;
+}
+
+.giamsat .img-class{
+    margin-top: 10px;
+    text-align: center;
+}
+
+#content .donvi{
+    float: right;
+}
+
+#content .trangthai{
+    float: right;
+}
+

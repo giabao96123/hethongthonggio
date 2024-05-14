@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐỒ ÁN TỐT NGHIỆP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/dienap.css">
+
+</head>
+<body>
+    <div id="main">       
+        <div id="header">
+            <ul id="nav">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="tongquan.html">Tổng quan</a></li>
+                <li><a href="mohinh.html">Mô hình</a></li>
+                <li><a href="gsdk.html">Giám sát - Điều khiển</a></li>
+                <li><a href="thongtinlienhe.html">More</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div class="header2">
+                <img src="img\logo HCMUTE.jpg" alt="" width="150" height="150" >
+                <div class="text">
+                    <h1 class="title">ĐỒ ÁN TỐT NGHIỆP</h1>
+                    <h2 class="title">Ứng dụng BMS điều khiển và giám sát hệ thống thông gió </h2>
+                    <p class="title">Cảnh báo khí Co và nhiệt độ</p>
+                </div>
+                <img src="img\logo FEEE.jpg" alt=""width="150" height="150">
+            </div>
+            <div id="voltage-monitor">
+                <div id="sheet-voltage" >
+                    <p class="report" onclick="open_sheet()">Report</p>
+                    <table id="table-sheet-voltage">
+                        <div class="body-sheet">
+                            <tr class="title-col-sheet">
+                                <th class="content-row-voltage">Thời gian</th>
+                                <th class="content-row-voltage">Điện áp</th>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+                <div id="frame-gauge-voltage" class="frame-gauge">
+                    <p id="frame-gauge-voltage-text" class="frame-gauge-text">Gauge Voltage</p>
+                    <canvas id="gauge-voltage" class="gauge"></canvas>
+                    <div id="volt" class="value"></div>
+                </div>               
+                <div id="voltage-monitor">
+                    <div id="frame-chart-voltage" class="frame-chart">
+                        <p id="frame-chart-voltage-text" class="frame-chart-text">Chart Voltage</p>
+                        <canvas id="chart-voltage" class="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gaugeJS/dist/gauge.min.js"></script>
+    <script src="js\dienap.js"> </script>
+</body>
+</html>

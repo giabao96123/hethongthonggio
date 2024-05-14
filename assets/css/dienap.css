@@ -1,0 +1,153 @@
+/*reset CSS*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*vị trí - kích thước (chiều rộng- chiều cao)- màu sắc- kiểu chữ- hình dạng*/
+
+html{
+    font-family: Arial, Helvetica, sans-serif; /* kiểu chữ */
+    scroll-behavior: smooth;
+} 
+
+#main {
+    
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+#header {
+    height: 70px;
+    background-color: #074c95;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+#nav li{
+    display: inline-block; /* viết ngang*/
+}
+
+#nav li a {
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    line-height: 70px;
+    padding: 0px 24px 0px 24px;
+    display: inline-block;
+    text-transform: uppercase; /* viết hoa*/
+}
+
+#nav li a:hover {
+    color: #fffc1e;
+    background-color: darkblue;
+}
+
+#content{
+    padding-top: 70px;
+}
+
+#content .header2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content .text{
+    margin-right: 50px;
+    margin-left: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+#voltage-monitor{
+    padding-top: 20px;
+    
+}
+
+#sheet-voltage{
+    margin-left: 100px;
+    width: 500px;
+}
+
+.report{
+    font-size: 30px;
+    padding-bottom: 20px;
+    cursor: pointer;
+    
+}
+
+.report:hover{
+    
+}
+
+#table-sheet-voltage{
+    background: #989a9b;
+}
+
+.title-col-sheet{
+    background: white;
+}
+
+.content-row-voltage{
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 500px;
+    text-align: center;
+    
+}
+
+.title-col-sheet:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.frame-gauge{
+    width: 500px;
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+.frame-gauge-text{
+    font-size: 30px;
+
+}
+
+.gauge{
+    width: 500px;
+    height: 250px;
+}
+
+.value{
+    color: black;
+    background: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.frame-chart{
+    margin-top: 20px;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+}
+
+.frame-chart-text{
+    font-size: 30px;
+}
+
+.chart{
+    margin-top: 20px;
+    width: 1000px;
+    height: 600px;
+    /* border: 2px solid #074c95; */
+}

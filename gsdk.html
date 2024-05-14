@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐỒ ÁN TỐT NGHIỆP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/gsdk.css">
+    <title>Thông báo động cơ chạy/dừng</title>
+<script>
+    function showNotification() {
+        var selectBox = document.getElementById("RCM");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        var notification = "";
+
+        switch (selectedValue) {
+            case "2":
+                notification = "Động cơ đang chạy theo hướng Forward (Fw).";
+                break;
+            case "4":
+                notification = "Động cơ đang chạy theo hướng Reverse (Rw).";
+                break;
+            case "1":
+                notification = "Động cơ đã dừng.";
+                break;
+            default:
+                notification = "Lựa chọn không hợp lệ.";
+        }
+
+        alert(notification);
+    }
+</script>
+
+</head>
+<body>
+    <div id="main">       
+        <div id="header">
+            <ul id="nav">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="tongquan.html">Tổng quan</a></li>
+                <li><a href="mohinh.html">Mô hình</a></li>
+                <li><a href="#" onclick="function_gsdk()">Giám sát - Điều khiển</a></li>
+                <li><a href="thongtinlienhe.html">More</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div class="header2">
+                <img src="img\logo HCMUTE.jpg" alt="" width="150" height="150" >
+                <div class="text">
+                    <h1 class="title">ĐỒ ÁN TỐT NGHIỆP</h1>
+                    <h2 class="title">Ứng dụng BMS điều khiển và giám sát hệ thống thông gió </h2>
+                    <h3 class="title">Cảnh báo khí Co và nhiệt độ </h3>
+                </div>
+                <img src="img\logo FEEE.jpg" alt=""width="150" height="150">
+            </div>
+            
+
+            <div id="mohinh">
+                <div class="gsnds">
+                    <h2 >Nhiệt Độ Hầm <span id="nhietdosupply"></span> °C </h2>
+                </div>
+                <!-- <div class="gsndr">
+                    <h2 ><span id="nhietdoreturn"></span> °C </h2>
+                </div> -->
+                <div class="gsass">
+                    <h2 >Nồng Độ Co <span id="apsuatsupply"></span> Npm </h2>
+                </div>
+                <!-- <div class="gsasr">
+                    <h2 ><span id="apsuatreturn"></span> Bar </h2>
+                </div> -->
+                <!-- <img class="chiller" src="hinh\chiller.png" alt="" width="400px">
+                <img class="pipe1" src="hinh\pipe1.png" alt="ống" width="220px">
+                <img class="pipe2" src="hinh\pipe2.png" alt="ống"width="220px"> -->
+                <!---------------------------------------------------- chức năng valve -------------------------------------------------------- -->               
+                <!--  <div class="valvebypass">
+                    <button class="open_modal_btn"> <img src="hinh\valve.png" alt="" width="170px"></button>
+                </div>              
+                <div class="valvesupply">
+                    <button class="open_modal_btn"> <img src="hinh\valve.png" alt="" width="170px"></button>
+                </div>
+                <div class="valvereturn">
+                    <button class="open_modal_btn"> <img src="hinh\valve.png" alt="" width="170px"></button>
+                </div>
+                <img id="close_open_supply_ngoai" src="img\on.png" alt="" width="37px">
+                <img id="close_open_return_ngoai" src="img\on.png" alt="" width="37px">
+                <img id="close_open_bypass_ngoai" src="img\on.png" alt="" width="37px">-->
+                <div class="modal hide">
+                    <div class="modal_inner">
+                        <div class="modal_header">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        </div>
+            
+                        <!-- <div class="modal_body">
+                            <h2 class="valve"> Valve Control </h2> 
+                            <div class="control_onoff">
+                                    <p>Supply Valve <span id="supply_valve">ON</span></p>
+                                <div>
+                                    <button id="btnOnId_01">ON</button>
+                                    <button id="btnOffId_01">OFF</button>
+                                    <img id="close_open_supply" src="img\on.png" alt="" width="37px">
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="modal_body">
+                            <div class="control_onoff">
+                                    <p>Return Valve <span id="return_valve">ON</span></p>
+                                <div>
+                                    <button id="btnOnId_02">ON</button>
+                                    <button id="btnOffId_02">OFF</button>
+                                    <img id="close_open_return" src="img\on.png" alt="" width="37px">
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="modal_body"> 
+                            <div class="control_onoff">
+                                    <p>Bypass Valve <span id="bypass_valve">ON</span></p>
+                                <div>
+                                    <button id="btnOnId_03">ON</button>
+                                    <button id="btnOffId_03">OFF</button>
+                                    <img id="close_open_bypass" src="img\on.png" alt="" width="37px">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- -------------------------------------------------------------------------------------------------------------------------------- -->
+                <!-- <img class="pipethang1-1" src="hinh\pipethang.png" alt="" height="58px">
+                <img class="pipethang2-1" src="hinh\pipethang.png" alt="" height="58px"> -->
+                <div class="tempsensor1">
+                    <img src="hinh/iconco2-removebg-preview.png" alt="" height="150px">
+                </div> 
+                <div class="tempsensor2">
+                    <img src="hinh/icontemp-removebg-preview (1).png" alt="" height="150px">
+                </div>
+                <!-- <img class="pipethang1-2" src="hinh\pipethang.png" alt="" height="58px">
+                <img class="pipethang2-2" src="hinh\pipethang.png" alt="" height="58px">
+                <div class="presensor1">
+                    <img src="hinh\presensor.png" alt="" height="78px">
+                </div> -->
+                <!-- <div class="presensor2">
+                    <img src="hinh\presensor.png" alt="" height="78px">
+                </div>
+                <img class="pipethang1-3" src="hinh\pipethang.png" alt="" height="58px">
+                <img class="pipethang2-3" src="hinh\pipethang.png" alt="" height="58px" width="120px">
+                <img class="co1" src="hinh\co.png" alt="" height="37px">
+                <img class="co2" src="hinh\co.png" alt="" height="37px" >
+                <img class="pipethang1-4" src="hinh\pipethangdung.png" alt="" width="58px" height="200px">
+                <img class="pipethang2-4" src="hinh\pipethangdung.png" alt="" width="58px" height="329px"> -->
+                <img class="ahu" src="hinh/Animation - 1715614238417.gif" alt=""width="60px" >
+                <!-- <img class="pipethang1-5" src="hinh/Alarm.gif" alt="" height="48px"> -->
+                <!-- <img class="co3 "src="hinh\co.png" alt="" height="37px">
+                <img class="pipethang1-6" src="hinh\pipethangdung.png" alt="" width="58px" height="200px"> -->
+                <img class="hcmute" src="hinh/mo hinh 4.png" alt="" height="700px">
+                <div class="control_onoff">
+                    <p> Đèn Báo Co <span id="supply_valve"></span></p>
+            
+                    <!-- <button id="btnOnId_01">ON</button>
+                    <button id="btnOffId_01">OFF</button> -->
+                    <img id="close_open_supply" src="img\on.png" alt="" width="37px">
+                </div>
+                 <div class="controlnhiet">
+                    <p>Đèn Báo Nhiệt  <span id="return_valve"></span></p>
+            
+                    <!-- <button id="btnOnId_01">ON</button>
+                    <button id="btnOffId_01">OFF</button> -->
+                    <img id="close_open_return" src="img\on.png" alt="" width="37px">
+                 </div>
+            
+                <!---------------------------------------------------- chức năng fan -------------------------------------------------------- -->                
+                <div class="fan">
+                    <button class="open_fan"><img  src="hinh/moto2-removebg-preview.png" alt="" width="135" height="135"></button>   
+                </div>
+                <div class="modal_fan hide">
+                    <div class="modal_inner_fan">
+                        <div class="modal_header_fan">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                        <div class="modal_body">
+                            <h2 id ="fan">MONITOR SYSTERM</h2>
+                            <section id="monitor-frame" class="monitor-frame">
+                                <ul class="monitor">
+                                    <li class="para-monitor" onclick="function_voltage()">
+                                        <!-- <a href="dienap.html"> -->
+                                            <p class="title-para-monitor">Điện áp</p>
+                                            <img class="icon-para-monitor" src="Hinh/voltage.png" alt="">
+                                            <div id="value-voltage-monitor" class="value-para-monitor" ></div>
+                                        </a>
+                                    </li>
+                                    <li class="para-monitor" onclick="function_current()">
+                                            <p class="title-para-monitor">Dòng điện</p>
+                                            <img class="icon-para-monitor" src="Hinh/current.png" alt="">
+                                            <div id="value-current-monitor" class="value-para-monitor"></div></a>
+                                        
+                                    </li>
+                                    <li class="para-monitor" onclick="function_frequency()">
+                                        <p class="title-para-monitor">Tần số</p>
+                                        <img class="icon-para-monitor" src="Hinh/frequency.png" alt="">
+                                        <div id="value-frequency-monitor" class="value-para-monitor"></div>
+                                    </li>
+                                    <li class="para-monitor" onclick="function_speed()">
+                                        <p class="title-para-monitor">Tốc độ</p>
+                                        <img class="icon-para-monitor" src="Hinh/speed.png" alt="">
+                                        <div id="value-speed-monitor" class="value-para-monitor"></div>
+                                    </li>
+                                    <li class="para-monitor" onclick="function_power()">
+                                        <p class="title-para-monitor">Công suất</p>
+                                        <img class="icon-para-monitor" src="Hinh/powerelectric-removebg-preview.png" alt="">
+                                        <div id="value-power-monitor" class="value-para-monitor"></div>
+                                    </li>
+                                    <li class="para-monitor" onclick="function_co()">
+                                        <p class="title-para-monitor">More</p>
+                                        <img class="icon-para-monitor" src="Hinh/speed.png" alt="">
+                                        <div id="value-speed-monitor" class="value-para-monitor"></div>
+                                    </li>
+                                </ul>
+                            </section>
+                            <h2 id ="fan">CONTROL SYSTERM</h2>
+                            <div class="control">
+                                <div class="input-group">
+                                    <div class="block">
+                                        <p>
+                                            <label >Lock:</label>
+                                            <div class="selectlockunlock">
+                                                <select class="UNLOCK" id="LOCK">
+                                                    <option value="0">Lock</option>
+                                                    <option value="1">Unlock</option>
+                                                    </select>
+                                            </div>
+                                        </p>
+                                        
+                                        <p>
+                                            <label >Rcm:</label>
+                                            <div class="selectrunstop">
+                                                <select class="RUN" id="RCM">
+                                                    <option value="2">Fw</option>
+                                                    <option value="4">Rw</option>
+                                                    <option value="1">Stop</option>
+                                                    </select>
+                                            </div>
+
+                                        </p>
+                                        <p>
+                                            <label >Acc:</label>
+                                        <input type="number" id="ACC">
+                                        </p>
+                                        <p>
+                                            <label >Dec:</label>
+                                        <input type="number" id="DEC">
+                                        </p>
+                                    </div>
+                                    <div class="block align-datalist">
+                                        <p>
+                                            <label >Min Value:</label>
+                                            <input type="number" list="topic"id="Min_value">
+                                            <datalist id="topic">
+                                              <option value="20">
+                                              <option value="30">
+                                            </datalist>
+                                        </p>
+                                        <p>
+                                            <label >Max Value:</label>
+                                            <input type="number" list="topic2" id="Max_value">
+                                            <datalist id="topic2">
+                                                <option value="30">
+                                                <option value="40">
+                                                <option value="50">
+                                            </datalist>
+                                        </p>
+                                        <p>
+                                            <label >Set Point Co :</label>
+                                            <input type="number" id="Set_Point">
+                                        </p>
+                                    </div>
+                                    <div class="block">
+                                        <p>
+                                            <label >Mode:</label>
+                                            <div class="selectover">
+                                                <select class="over" id="Over_Enable">
+                                                    <option value="0">Auto</option>
+                                                    <option value="1">Manual</option>
+                                                    <!-- <option value="1">STOP</option> -->
+                                                    </select>
+                                            </div>
+                                        </p>
+                                        <p>
+                                            <label >Set frequency:</label>
+                                            <input type="number" id="Over_Value">
+                                        </p>
+                                        <p>
+                                            <label >Set Point T°:</label>
+                                            <input type="number" list="topic3" id="Set_pointD01">
+                                            <datalist id="topic3">
+                                                <option value="30">
+                                                <option value="35">
+                                                <option value="40">
+                                            </datalist>
+                                        </p>
+                                        <p>
+                                            <label for="Set_pointD02">Set Point Co:</label>
+                                            <input type="number" list="topic4" id="Set_pointD02">
+                                            <datalist id="topic4">
+                                                <option value="50">
+                                                <option value="100">
+                                                <option value="500">
+                                            </datalist>
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="block">
+                                        <p>
+                                            <label >P:</label>
+                                            <input type="number" id="P">
+                                        </p>
+                                        <p>
+                                            <label >I:</label>
+                                            <input type="number" id="I">
+                                        </p>
+                                        <p>
+                                            <label >D:</label>
+                                            <input type="number" id="D">
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="display-area" id="display"></div>
+                            </div>
+                        </div>
+                        <div class="luu"id="write">
+                            <!-- <div class="alert">
+                                <div class="process"></div>
+                                <img class="check" src="hinh/5610944.png" alt="">
+                                <span> Ghi dữ liệu thành công</span>
+                            </div> -->
+                            <button>Lưu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="alert">
+                <div class="process"></div>
+                <img class="check" src="hinh/5610944.png" alt="">
+                <span> Ghi dữ liệu thành công</span>
+            </div>
+            <div class="alert1">
+                <div class="process"></div>
+                <img class="check" src="hinh/5610944.png" alt="">
+                <span> Trang thai dong co </span>
+            </div>
+            <div id="giamsatdienap">
+
+                <div id="sheet-voltage" >
+                    <p class="report" onclick="open_sheet()">Report</p>
+                    <table id="table-sheet-voltage">
+                        <div class="body-sheet">
+                            <tr class="title-col-sheet">
+                                <th class="content-row-voltage">Thời gian</th>
+                                <th class="content-row-voltage">Điện áp</th>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-voltage"></td>
+                                <td class="content-row-voltage"></td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+                <div id="frame-gauge-voltage" class="frame-gauge">
+                    <p id="frame-gauge-voltage-text" class="frame-gauge-text">Gauge Voltage</p>
+                    <canvas id="gauge-voltage" class="gauge"></canvas>
+                    <div id="volt" class="value"></div>
+                </div>               
+                <div id="voltage-monitor">
+                    <div id="frame-chart-voltage" class="frame-chart">
+                        <p id="frame-chart-voltage-text" class="frame-chart-text">Chart Voltage</p>
+                        <canvas id="chart-voltage" class="chart"></canvas>
+                    </div>
+                </div>
+            </div> 
+             <!-- --------dongdien-------------------------------------- -->
+             <div id="giamsatdongdien">
+                <div id="sheet-current" class="sheet" >
+                    <p class="report" onclick="open_sheet()">Report</p>
+                    <table id="table-sheet-current" class="table-sheet">
+                        <div class="body-sheet">
+                            <tr class="title-col-sheet">
+                                <th class="content-row-current">Thời gian</th>
+                                <th class="content-row-current">Dòng điện</th>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-current"></td>
+                                <td class="content-row-current"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-current"></td>
+                                <td class="content-row-current"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-current"></td>
+                                <td class="content-row-current"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-current"></td>
+                                <td class="content-row-current"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-current"></td>
+                                <td class="content-row-current"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-current"></td>
+                                <td class="content-row-current"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-current"></td>
+                                <td class="content-row-current"></td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+                <div id="frame-gauge-current" class="frame-gauge">
+                    <p id="frame-gauge-current-text" class="frame-gauge-text">Gauge Current</p>
+                    <canvas id="gauge-current" class="gauge"></canvas>
+                    <div id="current" class="value"></div>
+                </div>
+                <div id="current-monitor">
+                    <div id="frame-chart-current" class="frame-chart">
+                        <p id="frame-chart-current-text" class="frame-chart-text">Chart Current</p>
+                        <canvas id="chart-current" class="chart"></canvas>
+                    </div>
+                </div>              
+            </div>
+              <!-------tanso------------------------------------------------------------  -->
+             <div> <div id="giamsattanso">
+                <div id="sheet-frequency" class="sheet" >
+                    <p class="report" onclick="open_sheet()">Report</p>
+                    <table id="table-sheet-frequency" class="table-sheet">
+                        <div class="body-sheet">
+                            <tr class="title-col-sheet">
+                                <th class="content-row-frequency">Thời gian</th>
+                                <th class="content-row-frequency">Tấn Số</th>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-frequency"></td>
+                                <td class="content-row-frequency"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-frequency"></td>
+                                <td class="content-row-frequency"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-frequency"></td>
+                                <td class="content-row-frequency"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-frequency"></td>
+                                <td class="content-row-frequency"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-frequency"></td>
+                                <td class="content-row-frequency"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-frequency"></td>
+                                <td class="content-row-frequency"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-frequency"></td>
+                                <td class="content-row-frequency"></td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+                <div id="frame-gauge-frequency" class="frame-gauge">
+                    <p id="frame-gauge-frequency-text" class="frame-gauge-text">Gauge Frequency</p>
+                    <canvas id="gauge-frequency" class="gauge"></canvas>
+                    <div id="frequency" class="value"></div>
+                </div>
+                <div id="frequency-monitor">
+                    <div id="frame-chart-frequency" class="frame-chart">
+                        <p id="frame-chart-frequency-text" class="frame-chart-text">Chart Frequency</p>
+                        <canvas id="chart-frequency" class="chart"></canvas>
+                    </div>
+                </div>              
+            </div>
+            <!-- tocdo -->
+            <div id="giamsattocdo">
+                <div id="sheet-speed" class="sheet" >
+                    <p class="report" onclick="open_sheet()">Report</p>
+                    <table id="table-sheet-speed" class="table-sheet">
+                        <div class="body-sheet">
+                            <tr class="title-col-sheet">
+                                <th class="content-row-speed">Thời gian</th>
+                                <th class="content-row-speed">Tấn Số</th>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-speed"></td>
+                                <td class="content-row-speed"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-speed"></td>
+                                <td class="content-row-speed"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-speed"></td>
+                                <td class="content-row-speed"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-speed"></td>
+                                <td class="content-row-speed"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-speed"></td>
+                                <td class="content-row-speed"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-speed"></td>
+                                <td class="content-row-speed"></td>
+                            </tr>
+                            <tr class="title-col-sheet">
+                                <td class="content-row-speed"></td>
+                                <td class="content-row-speed"></td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+                <div id="frame-gauge-speed" class="frame-gauge">
+                    <p id="frame-gauge-speed-text" class="frame-gauge-text">Gauge Speed</p>
+                    <canvas id="gauge-speed" class="gauge"></canvas>
+                    <div id="speed" class="value"></div>
+                </div>
+                <div id="speed-monitor">
+                    <div id="frame-chart-speed" class="frame-chart">
+                        <p id="frame-chart-speed-text" class="frame-chart-text">Chart Speed</p>
+                        <canvas id="chart-speed" class="chart"></canvas>
+                    </div>
+                </div>              
+            </div>
+            <!-- congsuat -->
+             <div>
+                <div>
+                    <div id="giamsatcongsuat">
+                        <div id="sheet-power" class="sheet" >
+                            <p class="report" onclick="open_sheet()">Report</p>
+                            <table id="table-sheet-power" class="table-sheet">
+                                <div class="body-sheet">
+                                    <tr class="title-col-sheet">
+                                        <th class="content-row-power">Thời gian</th>
+                                        <th class="content-row-power">Công Suất</th>
+                                    </tr>
+                                    <tr class="title-col-sheet">
+                                        <td class="content-row-power"></td>
+                                        <td class="content-row-power"></td>
+                                    </tr>
+                                    <tr class="title-col-sheet">
+                                        <td class="content-row-power"></td>
+                                        <td class="content-row-power"></td>
+                                    </tr>
+                                    <tr class="title-col-sheet">
+                                        <td class="content-row-power"></td>
+                                        <td class="content-row-power"></td>
+                                    </tr>
+                                    <tr class="title-col-sheet">
+                                        <td class="content-row-power"></td>
+                                        <td class="content-row-power"></td>
+                                    </tr>
+                                    <tr class="title-col-sheet">
+                                        <td class="content-row-power"></td>
+                                        <td class="content-row-power"></td>
+                                    </tr>
+                                    <tr class="title-col-sheet">
+                                        <td class="content-row-power"></td>
+                                        <td class="content-row-power"></td>
+                                    </tr>
+                                    <tr class="title-col-sheet">
+                                        <td class="content-row-power"></td>
+                                        <td class="content-row-power"></td>
+                                    </tr>
+                                </div>
+                            </table>
+                        </div>
+                        <div id="frame-gauge-power" class="frame-gauge">
+                            <p id="frame-gauge-power-text" class="frame-gauge-text">Gauge Power</p>
+                            <canvas id="gauge-power" class="gauge"></canvas>
+                            <div id="power" class="value"></div>
+                        </div>
+                        <div id="power-monitor">
+                            <div id="frame-chart-power" class="frame-chart">
+                                <p id="frame-chart-power-text" class="frame-chart-text">Chart Power</p>
+                                <canvas id="chart-power" class="chart"></canvas>
+                            </div>
+                        </div>              
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>  
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gaugeJS/dist/gauge.min.js"></script>
+<script src="js\gsdk.js"> </script>
+</body>
+</html>

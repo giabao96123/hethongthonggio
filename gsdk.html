@@ -6,7 +6,7 @@
     <title>ĐỒ ÁN TỐT NGHIỆP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/gsdk.css">
-    <title>Thông báo động cơ chạy/dừng</title>
+    <!-- <title>Thông báo động cơ chạy/dừng</title>
 <script>
     function showNotification() {
         var selectBox = document.getElementById("RCM");
@@ -29,7 +29,7 @@
 
         alert(notification);
     }
-</script>
+</script> -->
 
 </head>
 <body>
@@ -63,7 +63,7 @@
                     <h2 ><span id="nhietdoreturn"></span> °C </h2>
                 </div> -->
                 <div class="gsass">
-                    <h2 >Nồng Độ Co <span id="apsuatsupply"></span> Npm </h2>
+                    <h2 >Nồng Độ Khí Co : <span id="apsuatsupply"></span> Npm </h2>
                 </div>
                 <!-- <div class="gsasr">
                     <h2 ><span id="apsuatreturn"></span> Bar </h2>
@@ -146,13 +146,13 @@
                 <img class="co2" src="hinh\co.png" alt="" height="37px" >
                 <img class="pipethang1-4" src="hinh\pipethangdung.png" alt="" width="58px" height="200px">
                 <img class="pipethang2-4" src="hinh\pipethangdung.png" alt="" width="58px" height="329px"> -->
-                <img class="ahu" src="hinh/Animation - 1715614238417.gif" alt=""width="50px" >
+                <img id="ahu" src="hinh/motor.gif" alt=""width="50px" >
                 <!-- <img class="pipethang1-5" src="hinh/Alarm.gif" alt="" height="48px"> -->
                 <!-- <img class="co3 "src="hinh\co.png" alt="" height="37px">
                 <img class="pipethang1-6" src="hinh\pipethangdung.png" alt="" width="58px" height="200px"> -->
                 <img class="hcmute" src="hinh/mo hinh 4.png" alt="" height="560px">
                 <div class="control_onoff">
-                    <p> Đèn Báo Co <span id="supply_valve"></span></p>
+                    <p> Đèn Báo Khí Co <span id="supply_valve"></span></p>
             
                     <!-- <button id="btnOnId_01">ON</button>
                     <button id="btnOffId_01">OFF</button> -->
@@ -164,6 +164,20 @@
                     <!-- <button id="btnOnId_01">ON</button>
                     <button id="btnOffId_01">OFF</button> -->
                     <img id="close_open_return" src="img\on.png" alt="" width="37px">
+                 </div>
+                 <div class="controldongcothuan">
+                    <p>Động cơ chạy thuận <span id="chaythuan"></span></p>
+            
+                    <!-- <button id="btnOnId_01">ON</button>
+                    <button id="btnOffId_01">OFF</button> -->
+                    <img id="dung" src="img\on.png" alt="" width="37px">
+                 </div>
+                 <div class="controldongconghich">
+                    <p>Động cơ chạy nghịch <span id="chaynghich"></span></p>
+            
+                    <!-- <button id="btnOnId_01">ON</button>
+                    <button id="btnOffId_01">OFF</button> -->
+                    <img id="dungs" src="img\on.png" alt="" width="37px">
                  </div>
             
                 <!---------------------------------------------------- chức năng fan -------------------------------------------------------- -->                
@@ -344,6 +358,16 @@
                 <div class="process"></div>
                 <img class="check" src="hinh/5610944.png" alt="">
                 <span> Trang thai dong co </span>
+            </div>
+            <div class="alert2">
+                <div class="process"></div>
+                <img class="check" src="hinh/5610944.png" alt="">
+                <span> Trang thai dieu khien </span>
+            </div>
+            <div class="alert3">
+                <div class="process"></div>
+                <img class="check" src="hinh/5610944.png" alt="">
+                <span> Trang thai mode </span>
             </div>
             <div id="giamsatdienap">
 

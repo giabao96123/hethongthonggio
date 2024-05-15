@@ -71,12 +71,12 @@ database.ref("Monitor system/den bao nhiet/data").on("value", function(snapshot)
     if(return1==1){
         document.getElementById("return_valve").innerHTML = "ON";
         document.getElementById("close_open_return").src = "img/on.png";
-        document.getElementById("close_open_return_ngoai").src = "img/on.png";
+        // document.getElementById("close_open_return_ngoai").src = "img/on.png";
     }
     else{
         document.getElementById("return_valve").innerHTML = "OFF";
         document.getElementById("close_open_return").src = "img/off.png"; 
-        document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
+        // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
     }
 })
 
@@ -148,9 +148,21 @@ database.ref("Monitor system/Output current/data").on("value", function(snapshot
     document.getElementById("value-current-monitor").innerHTML = Current + " A";
 })
 
+// database.ref("Monitor system/Output frequecy/data").on("value", function(snapshot){
+//     var Frequency = snapshot.val();
+//     document.getElementById("value-frequency-monitor").innerHTML = Frequency + " Hz";
+// })
+var motor_gif = document.getElementById("ahu")
 database.ref("Monitor system/Output frequecy/data").on("value", function(snapshot){
     var Frequency = snapshot.val();
-    document.getElementById("value-frequency-monitor").innerHTML = Frequency + " Hz";
+    if (Frequency == 0) {
+        motor_gif.style.display = "none"
+        document.getElementById("value-frequency-monitor").innerHTML = Frequency + " Hz";
+    } else {
+        motor_gif.style.display = "block"
+        document.getElementById("value-frequency-monitor").innerHTML = Frequency + " Hz";
+    }
+    
 })
 
 database.ref("Monitor system/Output speed/data").on("value", function(snapshot){
@@ -199,7 +211,7 @@ database.ref("Monitor system/Co concentration/data").on("value", function(snapsh
 //     } 
 // })
 
-// // get RETURN from firebase (auto update when data change)
+// get RETURN from firebase (auto update when data change)
 // database.ref("control/return").on("value", function(snapshot){
 //     var return1 = snapshot.val();
 //     if(return1==1){
@@ -304,7 +316,7 @@ document.getElementById('write').addEventListener('click', function(){
     // Lấy giá trị từ các input
     var minVal = document.getElementById('Over_Enable').value;
     database.ref("Control system").update({
-        "Virtual enable AO 01/data": minVal,    });
+        "Virtual enable DO 06/data": minVal,    });
 
 });         
 document.getElementById('write').addEventListener('click', function(){
@@ -332,6 +344,34 @@ document.getElementById('write').addEventListener('click', function(){
     database.ref("Control system").update({
         "Virtual run command/data": minVal,    });
 });
+database.ref("Control system/Virtual run command/data").on("value", function(snapshot){
+    var chaythuan = snapshot.val();
+    if(chaythuan==2){
+        document.getElementById("chaythuan").innerHTML = "ON";
+        document.getElementById("dung").src = "img/on.png";
+        // document.getElementById("close_open_return_ngoai").src = "img/on.png";
+    }
+    else{
+        document.getElementById("chaythuan").innerHTML = "OFF";
+        document.getElementById("dung").src = "img/off.png"; 
+        // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
+    }
+})
+database.ref("Control system/Virtual run command/data").on("value", function(snapshot){
+    var chaynghich = snapshot.val();
+    if(chaynghich==4){
+        document.getElementById("chaynghich").innerHTML = "ON";
+        document.getElementById("dungs").src = "img/on.png";
+        // document.getElementById("close_open_return_ngoai").src = "img/on.png";
+    }
+    else{
+        document.getElementById("chaynghich").innerHTML = "OFF";
+        document.getElementById("dungs").src = "img/off.png"; 
+        // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
+    }
+})
+
+
 document.getElementById('write').addEventListener('click', function(){
     // Lấy giá trị từ các input
     var minVal = document.getElementById('LOCK').value;
@@ -385,53 +425,128 @@ luuButton.addEventListener('click', () => {
         }, 200);
     }
 });
-const alertDiv = document.querySelector('.alert1');
+
+
+
+const alertDiv1 = document.querySelector('.alert1');
+
+        // Ẩn alert ban đầu
+        alertDiv1.style.right = '-500px';
+
+        // Thêm sự kiện change cho menu dropdown
+        document.getElementById('RCM').addEventListener('change', function() {
+            const selectedValue = this.value;
+            let message = '';
+
+            // Xác định thông báo tương ứng với giá trị được chọn
+            switch (selectedValue) {
+                case '2':
+                    message = 'Chế độ Forward ';
+                    break;
+                case '4':
+                    message = 'Chế độ Reverse ';
+                    break;
+                case '1':
+                    message = 'Chế độ dừng';
+                    break;
+                default:
+                    message = 'Lựa chọn không hợp lệ.';
+            }
+
+            // Hiển thị thông báo và tiến trình
+            if (alertDiv1.style.right === '-500px') {
+                alertDiv1.style.right = '20px';
+                let length = 70;
+                const process1 = alertDiv1.querySelector('.process'); // Chỉ lấy phần tử .process trong alert1
+                const run1 = setInterval(() => {
+                    process1.style.height = length + 'px';
+                    length -= 5;
+                    if (length <= -10) {
+                        clearInterval(run1);
+                        // Ẩn alert sau một khoảng thời gian
+                        setTimeout(() => {
+                            alertDiv1.style.right = '-500px';
+                        }, 500); // Đặt thời gian ẩn alert ở đây, ví dụ sau 2 giây (2000 miligiây)
+                    }
+                }, 80);
+            }
+            // Hiển thị thông báo
+            alertDiv1.querySelector('span').textContent = message;
+        });
+
+
+// Xử lý alert2
+const alertDiv2 = document.querySelector('.alert2');
 
 // Ẩn alert ban đầu
-alertDiv.style.right = '-500px';
+alertDiv2.style.right = '-500px';
 
 // Thêm sự kiện change cho menu dropdown
-document.getElementById('RCM').addEventListener('change', function() {
-    const selectedValue = this.value;
+document.getElementById('LOCK').addEventListener('change', function() {
+    const selectedValue2 = this.value;
     let message = '';
 
     // Xác định thông báo tương ứng với giá trị được chọn
-    switch (selectedValue) {
-        case '2':
-            message = 'Chế độ Forward ';
-            break;
-        case '4':
-            message = 'Chế độ Reverse ';
+    switch (selectedValue2) {
+        case '0':
+            message = 'Khóa';
             break;
         case '1':
-            message = 'Chế độ dừng';
+            message = 'Mở Khóa';
             break;
-        default:
-            message = 'Lựa chọn không hợp lệ.';
     }
 
     // Hiển thị thông báo và tiến trình
-    if (alertDiv.style.right === '-500px') {
-        alertDiv.style.right = '20px';
+    if (alertDiv2.style.right === '-500px') {
+        alertDiv2.style.right = '20px';
         let length = 70;
-        const process = document.querySelector('.process');
-        const run = setInterval(() => {
-            process.style.height = length + 'px';
+        const process2 = alertDiv2.querySelector('.process'); // Chỉ lấy phần tử .process trong alert2
+        const run2 = setInterval(() => {
+            process2.style.height = length + 'px';
             length -= 5;
             if (length <= -10) {
-                clearInterval(run);
+                clearInterval(run2);
                 // Ẩn alert sau một khoảng thời gian
                 setTimeout(() => {
-                    alertDiv.style.right = '-500px';
+                    alertDiv2.style.right = '-500px';
                 }, 500); // Đặt thời gian ẩn alert ở đây, ví dụ sau 2 giây (2000 miligiây)
             }
-        }, 50);
+        }, 80);
     }
-      // Hiển thị thông báo
-      alertDiv.querySelector('span').textContent = message;
-    });
+    // Hiển thị thông báo
+    alertDiv2.querySelector('span').textContent = message;
+});
 
-
+const alertDiv3 = document.querySelector('.alert3');
+        alertDiv3.style.right = '-500px';
+        document.getElementById('Over_Enable').addEventListener('change', function() {
+            const selectedValue3 = this.value;
+            let message = '';
+            switch (selectedValue3) {
+                case '0':
+                    message = 'Auto';
+                    break;
+                case '1':
+                    message = 'Manual';
+                    break;
+            }
+            if (alertDiv3.style.right === '-500px') {
+                alertDiv3.style.right = '20px';
+                let length = 70;
+                const process3 = alertDiv3.querySelector('.process');
+                const run3 = setInterval(() => {
+                    process3.style.height = length + 'px';
+                    length -= 5;
+                    if (length <= -10) {
+                        clearInterval(run3);
+                        setTimeout(() => {
+                            alertDiv3.style.right = '-500px';
+                        }, 500);
+                    }
+                }, 80);
+            }
+            alertDiv3.querySelector('span').textContent = message;
+        });
 
 // Gọi hàm function_gsdk ngay khi trang web được tải lên
 setTimeout(function() {
@@ -894,7 +1009,7 @@ var opts_frequency = {
                 content_row_frequency[13].innerHTML = value_frequency[5] + " Hz";
                 content_row_frequency[14].innerHTML = time_frequency[6];
                 content_row_frequency[15].innerHTML = value_frequency[6] + " Hz";
-            }, 1000);
+            }, 2000);
         });  
     
  // ----------tocdo------------------
@@ -961,7 +1076,7 @@ var opts_frequency = {
         database.ref("Monitor system/Output speed/data").on("value", function (snapshot) {
             //----------------------------- Gauge ----------------------------
             var speed_out = snapshot.val();
-            document.getElementById("speed").innerHTML = speed_out + " Hz";    
+            document.getElementById("speed").innerHTML = speed_out + " Kw";    
             
             var target_speed = document.getElementById('gauge-speed'); // your canvas element
             var ctx = target_speed.getContext('2d');
@@ -1025,7 +1140,7 @@ var opts_frequency = {
                 content_row_speed[13].innerHTML = value_speed[5] + " rpm";
                 content_row_speed[14].innerHTML = time_speed[6];
                 content_row_speed[15].innerHTML = value_speed[6] + " rpm";
-            }, 1000);
+            }, 2000);
         });   
 //-----congsuat------
 var opts_power = {
@@ -1156,6 +1271,6 @@ database.ref("Monitor system/Output Power/data").on("value", function (snapshot)
         content_row_power[14].innerHTML = time_power[6];
         content_row_power[15].innerHTML = value_power[6] + " Kw";
 
-    }, 1000);
+    }, 2000);
 });
 

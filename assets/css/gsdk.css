@@ -51,22 +51,28 @@ body{
 }
 
 #content {
-    background-image: url('https://raw.githubusercontent.com/giabao96123/cosysterm/main/img/background.jpg');
+    background-image: url('https://raw.githubusercontent.com/giabao96123/cosysterm/main/img/backgroundthongigo.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh; /*Đảm bảo hình ảnh nền sẽ lấp đầy toàn bộ kích thước của trang  */
     justify-content: center; 
 }
-
+/* logotendetai */
 #content .header2 {
     margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ffffff;
+    margin-left: 350px;
+    margin-right: 350px;
+    border-radius: 15px;
+    border: 4px solid #073f7e;
 }
 
 #content .header2 img {
     margin: 0 0px; /* Để tạo khoảng cách giữa hai logo */
+    margin-top: 10px;
 }
 
 
@@ -81,6 +87,7 @@ body{
     border-radius: 10px;
     text-align: center;
     font-size: 15px;
+    margin-top: 8px;
     /* line-height: 1.5; */
 }
 
@@ -157,14 +164,14 @@ body{
 
 .tempsensor1{
     position: fixed;
-    top: 810px;
-    left: 1100px;
+    top: 590px;
+    left: 824px;
     z-index: 2;
 }
 .tempsensor2{
     position: fixed;
-    top: 810px;
-    left: 815px;
+    top: 590px;
+    left: 591px;
     z-index: 2;
 }
 
@@ -246,8 +253,8 @@ body{
 }
 .ahu{
     position: fixed;
-    top: 719px;
-    left:1000px;
+    top: 494px;
+    left: 727px;
     z-index: 2;
 }
 .co3{
@@ -267,7 +274,7 @@ body{
 
 .hcmute{
     position: fixed;
-    top: 130px;
+    top: 135px;
     left: 560px;
     z-index: 1;
 }
@@ -280,13 +287,13 @@ body{
     opacity: 0.6;
 }
 /* -------------------------------- */
-
+/* nhietdo */
 .gsnds{
     width: 150px;
     line-height: 2;
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15.5px;
     width: 180px;
     justify-content: center;
     text-align: center;
@@ -295,8 +302,8 @@ body{
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: fixed;
-    top: 810px;
-    left: 610px;
+    top: 435px;
+    left: 377px;
 }
 
 .gsndr{
@@ -312,12 +319,12 @@ body{
     top: 830px;
     left: 445px;
 }
-
-.gsass{
+/* nongdoco */
+.gsass{    
     line-height: 2;
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15.5px;
     width: 180px;
     justify-content: center;
     text-align: center;
@@ -326,8 +333,8 @@ body{
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: fixed;
-    top: 810px;
-    left: 1267px;
+    top: 435px;
+    left: 945px;
 }
 
 .gsasr{
@@ -339,8 +346,8 @@ body{
     border-radius: 9px;
     border: 2px solid blue;
     position: fixed;
-    top: 830px;
-    left: 585px;
+    top: 430px;
+    left: 385px;
 }
 
 .open_modal_btn{
@@ -395,7 +402,7 @@ body{
 }
 
 .modal_body p{
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 /* #supply_valve{
@@ -445,7 +452,7 @@ body{
     line-height: 2;
     font-style: normal;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 23px;
     width: 180px;
     justify-content: center;
     text-align: center;
@@ -454,8 +461,8 @@ body{
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: fixed;
-    top: 640px;
-    left: 1267px;
+    top: 545px;
+    left: 945px;
 }
 
 /* .control_onoff button{
@@ -469,7 +476,7 @@ body{
     line-height: 2;
     font-style: normal;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 23px;
     width: 180px;
     justify-content: center;
     text-align: center;
@@ -478,8 +485,8 @@ body{
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: fixed;
-    top: 640px;
-    left: 610px;
+    top: 545px;
+    left: 377px;
 }
 
 .luu{
@@ -489,7 +496,7 @@ body{
 .luu button{
     font-size: 20px;
     margin: 5px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     color: white;
     background: #074c95;
     border-radius: 10px;
@@ -523,7 +530,7 @@ body{
     border: 2px solid #074c95;
     /* border-radius: 10px; */
     position: fixed;
-    top: 50%;
+    top: 49.92%;
     left: 50%;
     transform: translate(-50%, -50%);
     
@@ -533,10 +540,10 @@ body{
     display: none;
 
 }
-
+/* bangdieukien */
 .modal_inner_fan{  
-    width: 1300px;
-    height: 700px;
+    width: 910px;
+    height: 693px;
     background: white;
     /* border-radius: 10px; */
     overflow: hidden;
@@ -550,7 +557,7 @@ body{
     color: white;
     cursor: pointer;
     text-align: right;
-    font-size: 35px;
+    font-size: 25px;
 }
 
 .modal_body #fan{
@@ -571,14 +578,14 @@ body{
     height: auto;
     
 }
-
+/* khoigiamsat */
 .para-monitor{
     list-style: none;
-    width: 10%;
+    width: 15.2%;
     height: 100px;
     display: inline-block;
     vertical-align: top;
-    margin: 1% 11.51% ;
+    margin: 1% 8.9% ;
     text-align: center;
     justify-content: center;
     border-radius: 20px;
@@ -590,11 +597,11 @@ body{
 
 .block{
     list-style: none;
-    width: 10%;
+    width: 14.8%;
     height: 270px;
     display: inline-block;
     vertical-align: top;
-    margin: 0 7% ;
+    margin: 0 4.77% ;
     text-align: center;
     justify-content: center;
     border-radius:10px;
@@ -605,22 +612,23 @@ body{
 }
 
 
+
 .block input{
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .selectrunstop{
     display: flex;
     justify-content: center;
     position: relative;
-    min-width: 176px;
-    height: 35px;
+    min-width: 120px;
+    height: 30px;
 
 }
 .RUN{
     border-color: #000000;
     appearance: none;
-    padding: 0 30px 0 15px;
+    padding: 0 30px 0 10px;
     width: 92%;
     font-size: 20px;
     cursor: pointer;
@@ -629,14 +637,14 @@ body{
     display: flex;
     justify-content: center;
     position: relative;
-    min-width: 176px;
-    height: 35px;
+    min-width: 120px;
+    height: 30px;
 
 }
 .UNLOCK{
     border-color: #000000;
     appearance: none;
-    padding: 0 30px 0 15px;
+    padding: 0 30px 0 10px;
     width: 92%;
     font-size: 20px;
     cursor: pointer;
@@ -645,14 +653,14 @@ body{
     display: flex;
     justify-content: center;
     position: relative;
-    min-width: 176px;
-    height: 35px;
+    min-width: 120px;
+    height: 30px;
 
 }
 .over{
     border-color: #000000;
     appearance: none;
-    padding: 0 30px 0 15px;
+    padding: 0 30px 0 10px;
     width: 92%;
     font-size: 20px;
     cursor: pointer;
@@ -704,19 +712,19 @@ body{
     background-color: #f3fff3;
 } */
 .input-group label{
-    font-size: 20px;
+    font-size: 18px;
     justify-content: center;
 }
 .input-group{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .input-group input{
-    width: 150px;
-    height: 35px;
-    font-size: 20px;
+    width: 120px;
+    height: 30px;
+    font-size: 18px;
     justify-content: center;
-    padding-left: 15px;
+    padding-left: 12px;
 }
 
 .para-monitor a{
@@ -732,8 +740,8 @@ body{
 }
 
 .icon-para-monitor{
-    width: 10%;
-    padding-top: 5px;
+    width: 17%;
+    padding-top: 3px;
 }
 
 .value-para-monitor{
@@ -756,13 +764,13 @@ body{
 }
 
 #sheet-voltage{
-    margin-left: 100px;
-    width: 500px;
+    margin-left: 20px;
+    width: 400px;
 }
 
 .report{
-    font-size: 30px;
-    padding-bottom: 20px;
+    font-size: 25px;
+    padding-bottom: 10px;
     cursor: pointer;
     
 }
@@ -782,7 +790,7 @@ body{
 .content-row-voltage{
     padding: 5px 10px;
     font-size: 15px;
-    width: 500px;
+    width: 400px;
     text-align: center;
     
 }
@@ -792,43 +800,43 @@ body{
 }
 
 .frame-gauge{
-    width: 500px;
-    margin-top: 20px;
-    margin-left: 100px;
+    width: 380px;
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .frame-gauge-text{
-    font-size: 30px;
+    font-size: 25px;
 
 }
 
 .gauge{
-    width: 500px;
-    height: 250px;
+    width: 380px;
+    height: 180px;
 }
 
 .value{
     color: black;
     background: white;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 
 .frame-chart{
     margin-top: 20px;
     position: absolute;
-    top: 26%;
+    top: 20%;
     left: 35%;
 }
 
 .frame-chart-text{
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .chart{
-    margin-top: 20px;
-    width: 1000px;
-    height: 600px;
+    margin-top: 10px;
+    width: 900px;
+    height: 500px;
     /* border: 2px solid #074c95; */
     
 }
@@ -842,7 +850,7 @@ body{
 .content-row-current{
     padding: 5px 10px;
     font-size: 15px;
-    width: 500px;
+    width: 400px;
     text-align: center;
     
 }
@@ -854,14 +862,14 @@ body{
     background: #989a9b;
 }
 #sheet-current{
-    margin-left: 100px;
-    width: 500px;
+    margin-left: 20px;
+    width: 400px;
 }
 /* -----------tanso------------- */
 .content-row-frequency{
     padding: 5px 10px;
     font-size: 15px;
-    width: 500px;
+    width: 400px;
     text-align: center;
     
 }
@@ -879,14 +887,14 @@ body{
     background: #989a9b;
 }
 #sheet-frequency{
-    margin-left: 100px;
-    width: 500px;
+    margin-left: 20px;
+    width: 400px;
 }
 /* ---------tocdoquay------------- */
 .content-row-speed{
     padding: 5px 10px;
     font-size: 15px;
-    width: 500px;
+    width: 400px;
     text-align: center;
     
 }
@@ -904,14 +912,14 @@ body{
     background: #989a9b;
 }
 #sheet-speed{
-    margin-left: 100px;
-    width: 500px;
+    margin-left: 20px;
+    width: 400px;
 }
 /* ---------congsuat------------- */
 .content-row-power{
     padding: 5px 10px;
     font-size: 15px;
-    width: 500px;
+    width: 400px;
     text-align: center;
     
 }
@@ -929,8 +937,8 @@ body{
     background: #989a9b;
 }
 #sheet-power{
-    margin-left: 100px;
-    width: 500px;
+    margin-left: 20px;
+    width: 400px
 }
 
 
@@ -952,7 +960,7 @@ body{
 .alert {
     display: flex;
     position: absolute;
-    width: 300px;
+    width: 270px;
     height: 70px;
     align-items: center;
     top: 100px;
@@ -969,7 +977,7 @@ body{
 .alert1 {
     display: flex;
     position: absolute;
-    width: 300px;
+    width: 270px;
     height: 70px;
     align-items: center;
     top: 100px;
@@ -994,9 +1002,9 @@ body{
 
 .check {
     position: absolute;
-    width: 12%;
+    width: 10%;
     height: auto;
-    top: 20%;
+    top: 30%;
     left: 5%;
 }
 

@@ -634,7 +634,7 @@ var j = 0;
             content_row_voltage[13].innerHTML = value_voltage[5] + " V";
             content_row_voltage[14].innerHTML = time_voltage[6];
             content_row_voltage[15].innerHTML = value_voltage[6] + " V";
-        }, 1000);
+        }, 2000);
     });
 // -------DONGDIEN------/
 var opts_current = {

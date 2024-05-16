@@ -311,7 +311,21 @@ document.getElementById('write').addEventListener('click', function(){
             database.ref("Control sensor").update({
                 "Virtual setpoint AO1/data": minVal,    });
         
- });     
+ });
+ document.getElementById('write').addEventListener('click', function(){
+    // Lấy giá trị từ các input
+    var minVal = document.getElementById('Set_pointD01').value;
+    database.ref("Control sensor").update({
+        "Virtual setpoint  DO1/data": minVal,    });
+
+});
+document.getElementById('write').addEventListener('click', function(){
+    // Lấy giá trị từ các input
+    var minVal = document.getElementById('Set_pointD02').value;
+    database.ref("Control sensor").update({
+        "Virtual setpoint  DO2/data": minVal,    });
+
+});             
  document.getElementById('write').addEventListener('click', function(){
     // Lấy giá trị từ các input
     var minVal = document.getElementById('Over_Enable').value;
@@ -357,6 +371,19 @@ database.ref("Control system/Virtual run command/data").on("value", function(sna
         // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
     }
 })
+database.ref("Monitor system/Output frequecy/data").on("value", function(snapshot){
+    var trangthai = snapshot.val();
+    if(trangthai==0){
+        document.getElementById("trangthai").innerHTML = "OFF";
+        document.getElementById("stop").src = "img/off.png";
+        // document.getElementById("close_open_return_ngoai").src = "img/on.png";
+    }
+    else{
+        document.getElementById("trangthai").innerHTML = "ON";
+        document.getElementById("stop").src = "img/on.png"; 
+        // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
+    }
+})
 database.ref("Control system/Virtual run command/data").on("value", function(snapshot){
     var chaynghich = snapshot.val();
     if(chaynghich==4){
@@ -396,6 +423,7 @@ document.getElementById('write').addEventListener('click', function(){
     database.ref("Control system").update({
         "Virtual value D/data": minVal,    });
 });
+
 
 
 // Chọn button có class "luu"

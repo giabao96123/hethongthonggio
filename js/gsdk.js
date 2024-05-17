@@ -309,7 +309,7 @@ document.getElementById('write').addEventListener('click', function(){
             // Lấy giá trị từ các input
             var minVal = document.getElementById('Set_Point').value;
             database.ref("Control sensor").update({
-                "Virtual setpoint AO1/data": minVal,    });
+                "Virtual setpoint Co/data": minVal,    });
         
  });
  document.getElementById('write').addEventListener('click', function(){

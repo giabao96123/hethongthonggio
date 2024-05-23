@@ -20,12 +20,14 @@ body{
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
 #header {
     height: 40px;
     background-color:#073f7e;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
@@ -105,21 +107,21 @@ body{
 } */
 
 /* .chiller{
-    position: fixed;
+    position: absolute;
     top: 600px;
     left: 30px;
     z-index: 1;
 } */
 
 /* .pipe1{
-    position: fixed;
+    position: absolute;
     top: 650px;
     left: 675px;
     z-index: 1;
 }
 
 .pipe2{
-    position: fixed;
+    position: absolute;
     top: 770px;
     left: 675px;
     z-index: 1;
@@ -127,7 +129,7 @@ body{
 
 .valvebypass{
     transform: rotate(90deg);
-    position: fixed;
+    position: absolute;
     top: 647px;
     left: 730px;
     z-index: 0;
@@ -137,7 +139,7 @@ body{
     font-size: 16px;
     color: rgb(0, 0, 0);
     /* font-weight: bold; */
-    position: fixed;
+    position: absolute;
     top: 287px;
     left: 738px
     
@@ -146,115 +148,115 @@ body{
     font-size: 16px;
     color: rgb(0, 0, 0);
     /* font-weight: bold; */
-    position: fixed;
+    position: absolute;
     top: 287px;
     left: 738px
     
 }
 .valvesupply{
-    position: fixed;
+    position: absolute;
     top: 560px;
     left: 848px;
     z-index: 0;
 }
 
 .valvereturn{
-    position: fixed;
+    position: absolute;
     top: 687px;
     left: 848px;
     z-index: 0;
 }
 
 .pipethang1-1{
-    position: fixed;
+    position: absolute;
     top: 649px;
     left: 397px;
     z-index: 1;
 }
 
 .pipethang2-1{
-    position: fixed;
+    position: absolute;
     top: 776px;
     left: 397px;
     z-index: 1;
 }
 
 .tempsensor1{
-    position: fixed;
+    position: absolute;
     top: 590px;
     left: 824px;
     z-index: 2;
 }
 .tempsensor2{
-    position: fixed;
+    position: absolute;
     top: 590px;
     left: 591px;
     z-index: 2;
 }
 
 .pipethang1-2{
-    position: fixed;
+    position: absolute;
     top: 649px;
     left: 525px;
     z-index: 1;
 }
 
 .pipethang2-2{
-    position: fixed;
+    position: absolute;
     top: 776px;
     left: 525px;
     z-index: 1;
 }
 
 .presensor1{
-    position: fixed;
+    position: absolute;
     top: 617px;
     left: 597px;
     z-index: 1;
 }
 .presensor2{
-    position: fixed;
+    position: absolute;
     top: 743px;
     left: 597px;
     z-index: 1;
 }
 .pipethang1-3{
-    position: fixed;
+    position: absolute;
     top: 649px;
     left: 968px;
     z-index: 1;
 }
 
 .pipethang2-3{
-    position: fixed;
+    position: absolute;
     top: 776px;
     left: 968px;
     z-index: 1;
 }
 
 .co1{
-    position: fixed;
+    position: absolute;
     top: 657px;
     left: 1040px;
     z-index: 1;
 }
 
 .co2{
-    position: fixed;
+    position: absolute;
     top: 784px;
     left: 1088px;
     z-index: 1;
 }
 
 .pipethang1-4{
-    position: fixed;
+    position: absolute;
     top: 457px;
     left: 1035px;
     z-index: 1;
 }
 
 .pipethang2-4{
-    position: fixed;
+    position: absolute;
     top: 458px;
     left: 1082px;
     z-index: 1;
@@ -263,43 +265,52 @@ body{
 
 
 .pipethang1-5{
-    position: fixed;
+    position: absolute;
     top: 845px;
     left: 690px;
 
 }
-#ahu{
-    position: fixed;
+#ahu1{
+    position: absolute;
     top: 494px;
     left: 727px;
     z-index: 2;
     border-radius: 50%;
     overflow: hidden;
 }
+#ahu{
+    position: absolute;
+    top: 494px;
+    left: 727px;
+    z-index: 2;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 .co3{
     transform: rotate(-90deg);
-    position: fixed;
+    position: absolute;
     top: 358px;
     left: 1672px;
     z-index: 1;
 }
 
 .pipethang1-6{
-    position: fixed;
+    position: absolute;
     top: 395px;
     left: 1665px;
     z-index: 1;
 }
 
 .hcmute{
-    position: fixed;
+    position: absolute;
     top: 135px;
     left: 560px;
     z-index: 1;
 }
 
 .fan{
-    position: fixed;
+    position: absolute;
     top: 480px;
     left:665px;
     z-index: 3;
@@ -320,7 +331,7 @@ body{
     background:rgba(239, 239, 238, 0.941);
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
-    position: fixed;
+    position: absolute;
     top: 465px;
     left: 405px;
 }
@@ -337,11 +348,11 @@ body{
     background:rgba(239, 239, 238, 0.941);
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
-    position: fixed;
+    position: absolute;
     top: 325px;
     left: 405px;
 }
-.controldongconghich{
+.controldenbao{
     width: 150px;
     line-height: 2;
     font-style: normal;
@@ -354,7 +365,7 @@ body{
     background:rgba(239, 239, 238, 0.941);
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
-    position: fixed;
+    position: absolute;
     top: 325px;
     left: 945px;
 }
@@ -367,7 +378,7 @@ body{
     background: rgba(255, 255, 0, 0.6);
     border-radius: 9px;
     border: 2px solid blue;
-    position: fixed;
+    position: absolute;
     top: 830px;
     left: 445px;
 }
@@ -384,7 +395,7 @@ body{
     background:rgba(239, 239, 238, 0.941);
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
-    position: fixed;
+    position: absolute;
     top: 465px;
     left: 945px;
 }
@@ -397,7 +408,7 @@ body{
     background: rgba(255, 255, 0, 0.6);
     border-radius: 9px;
     border: 2px solid blue;
-    position: fixed;
+    position: absolute;
     top: 430px;
     left: 385px;
 }
@@ -413,7 +424,7 @@ body{
     z-index: 2;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -474,7 +485,7 @@ body{
 }
 
 #close_open_supply_ngoai{
-    position: fixed;
+    position: absolute;
     top: 610px;
     left: 910px;
 }
@@ -484,7 +495,7 @@ body{
 }
 
 #close_open_return_ngoai{
-    position: fixed;
+    position: absolute;
     top: 738px;
     left: 910px;
 }
@@ -495,7 +506,7 @@ body{
 
 #close_open_bypass_ngoai{
     rotate: 90deg;
-    position: fixed;
+    position: absolute;
     top: 717px;
     left: 818px;
 } */
@@ -512,7 +523,7 @@ body{
     background:rgba(239, 239, 238, 0.941);
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
-    position: fixed;
+    position: absolute;
     top: 565px;
     left: 945px;
 }
@@ -537,7 +548,7 @@ body{
     background:rgba(239, 239, 238, 0.941);
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
-    position: fixed;
+    position: absolute;
     top: 565px;
     left: 405px;
 }
@@ -568,6 +579,169 @@ body{
         opacity: 1;
     }
 } */
+.controlmode {
+    width: 250px;
+    background: #074c95;
+    position: absolute;
+    top: 200px;
+    left: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 5px; /* Đảm bảo khoảng cách giữa viền và nội dung bên trong */
+}
+
+.controlmode .time {
+    padding: 5px;
+    color: white;
+}
+
+.controlmode .headermode {
+    background: white;
+    border: 2px solid #074c95;
+    color: #074c95;
+    text-align: center;
+    font-size: 20px;
+    margin: 5px 0; /* Khoảng cách giữa các phần tử */
+}
+
+.controlmode .headermode_bms {
+    color: white;
+    padding-left: 5px;
+    font-size: 20px;
+    margin: 5px 0; /* Khoảng cách giữa các phần tử */
+}
+
+.btncontrols {
+    display: flex;
+    justify-content: space-between; /* Đặt khoảng cách đều giữa các khối */
+    gap: 5px; /* Khoảng cách giữa các khối */
+}
+
+.btncontrol, .btncontrol1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Để các khối có cùng kích thước */
+    font-size: 20px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    padding: 15px 5px;
+    box-sizing: border-box;
+    margin: 0; /* Loại bỏ khoảng cách bên ngoài */
+    position: relative; /* Để định vị các đèn báo tín hiệu */
+}
+
+.btncontrol p, .btncontrol1 p {
+    margin: 5px 0 0 0; /* Khoảng cách bên trong cho đoạn văn */
+}
+
+.manual, .auto {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+input[type="time"] {
+    width: 150px; /* Độ rộng */
+    height: 30px; /* Chiều cao */
+    padding: 5px; /* Khoảng cách bên trong */
+    border: 1px solid #ccc; /* Đường viền */
+    border-radius: 5px; /* Bo góc */
+    background-color: #f4f4f4; /* Màu nền */
+    color: #333; /* Màu chữ */
+    font-size: 14px; /* Cỡ chữ */
+    outline: none; /* Loại bỏ đường viền khi được focus */
+}
+/* ------------------------------------------------------timese-------------------------------------------------------------- */
+.timeset {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    gap: 5px; /* Khoảng cách giữa các phần tử */
+    width: 180px;
+    background: #074c95;
+    text-align: center;
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    font-size: 20px;
+    color: #ffffff;
+    border-radius: 9px;
+    height: 180px;
+    position: absolute;
+    top: 400px; 
+    left: 50px;
+    font-weight: bold;
+}
+
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Căn giữa nội dung của switch-container */
+    width: 100%; /* Đảm bảo switch-container chiếm toàn bộ chiều ngang của timeset */
+}
+
+.timeInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    width: 100%; /* Đảm bảo timeInput chiếm toàn bộ chiều ngang của timeset */
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #00d212;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+input[type="time"] {
+    font-size: 20px; /* Điều chỉnh giá trị này để thay đổi kích thước */
+    /* width: 80%; Đảm bảo input chiếm toàn bộ chiều ngang của khối cha */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước tổng thể của input */
+}
+
 
 .open_fan{
     background: none;
@@ -582,7 +756,7 @@ body{
     background: rgba(0, 0, 0, 0.6);
     border: 2px solid #074c95;
     /* border-radius: 10px; */
-    position: fixed;
+    position: absolute;
     top: 49.92%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -727,7 +901,7 @@ body{
     border-radius: 20px;
     box-shadow: 1px 1px 2px 2px rgb(163, 161, 161);
     background-color: #f3fff3;
-    position: fixed;
+    position: absolute;
     top: 400px;
     left: 80px;
 } */
@@ -804,10 +978,15 @@ body{
 
 /* Dien ap */
 #giamsatdienap{
+    opacity: 0;
     background-color: white;
-    margin-top: 20px;
+    margin-top: 10px;
+    height: 540px;
     margin-left: 70px;
     margin-right: 70px;
+    border-radius: 9px;
+    border: 4px solid #073f7e;
+
 }
 
 
@@ -896,9 +1075,13 @@ body{
 /* ------dongdien------- */
 #giamsatdongdien{
     background-color: white;
-    margin-top: 20px;
+    opacity: 0;
+    margin-top: 10px;
+    height: 540px;
     margin-left: 70px;
     margin-right: 70px;
+    border-radius: 9px;
+    border: 4px solid #073f7e;
 }
 .content-row-current{
     padding: 5px 10px;
@@ -928,9 +1111,13 @@ body{
 }
 #giamsattanso{
     background-color: white;
-    margin-top: 20px;
+    opacity: 0;
+    margin-top: 10px;
+    height: 540px;
     margin-left: 70px;
     margin-right: 70px;
+    border-radius: 9px;
+    border: 4px solid #073f7e;
 }
 #frequency-monitor{
     padding-top: 20px;
@@ -953,9 +1140,13 @@ body{
 }
 #giamsattocdo{
     background-color: white;
-    margin-top: 20px;
+    opacity: 0;
+    margin-top: 10px;
+    height: 540px;
     margin-left: 70px;
     margin-right: 70px;
+    border-radius: 9px;
+    border: 4px solid #073f7e;
 }
 #speed-monitor{
     padding-top: 20px;
@@ -978,9 +1169,13 @@ body{
 }
 #giamsatcongsuat{
     background-color: white;
-    margin-top: 20px;
+    opacity: 0;
+    margin-top: 10px;
+    height: 540px;
     margin-left: 70px;
     margin-right: 70px;
+    border-radius: 9px;
+    border: 4px solid #073f7e;
 }
 #power-monitor{
     padding-top: 20px;

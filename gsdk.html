@@ -144,6 +144,7 @@
                 <img class="co2" src="hinh\co.png" alt="" height="37px" >
                 <img class="pipethang1-4" src="hinh\pipethangdung.png" alt="" width="58px" height="200px">
                 <img class="pipethang2-4" src="hinh\pipethangdung.png" alt="" width="58px" height="329px"> -->
+                <img id="ahu1" src="hinh/motor-gif_000_delay-0.03s.gif" alt=""width="50px" >
                 <img id="ahu" src="hinh/motor.gif" alt=""width="50px" >
                 <!-- <img class="pipethang1-5" src="hinh/Alarm.gif" alt="" height="48px"> -->
                 <!-- <img class="co3 "src="hinh\co.png" alt="" height="37px">
@@ -164,19 +165,51 @@
                     <img id="close_open_return" src="img\on.png" alt="" width="37px">
                  </div>
                  <div class="controldongcothuan">
-                    <p>Động cơ chạy thuận <span id="chaythuan"></span></p>
+                    <p>Quạt Hút  <span id="chaythuan"></span></p>
             
                     <!-- <button id="btnOnId_01">ON</button>
                     <button id="btnOffId_01">OFF</button> -->
                     <img id="dung" src="img\on.png" alt="" width="37px">
                  </div>
-                 <div class="controldongconghich">
-                    <p>Động cơ chạy nghịch <span id="chaynghich"></span></p>
-            
-                    <!-- <button id="btnOnId_01">ON</button>
-                    <button id="btnOffId_01">OFF</button> -->
+                 <div class="controldenbao">
+                    <p>Đèn Báo Khẩn Cấp <span id="chay"></span></p>
                     <img id="dungs" src="img\on.png" alt="" width="37px">
                  </div>
+                 <div class="controlmode">
+                    <div class="time">
+                        <label>Time:</label>
+                        <span id="current_time"></span>
+                    </div>
+                    <h1 class="headermode">Exhaust Motor</h1>
+                    <h2 class="headermode_bms">Control Mode</h2>
+                    <div class="btncontrols">
+                        <div class="btncontrol">
+                            <img id="manualid" class="manual" src="img/on.png" alt="" width="15px">
+                            <p>MANUAL<span id="chay"></span></p>
+                        </div>
+                        <div class="btncontrol1">
+                            <img id="autolid" class="auto" src="img/on.png" alt="" width="15px">
+                            <p>AUTO<span id="chays"></span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeset">
+                    <div class="switch-container">
+                        <label class="switch">
+                            <input type="checkbox" id="onOffSwitch">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="timeInput">
+                        <label for="timeInput">Thời Gian Tắt:</label>
+                        <input type="time" id="timeInput">
+                    </div>
+                    <div class="timeInput">
+                        <label for="resetTimeInput">Thời Gian Bật:</label>
+                        <input type="time" id="resetTimeInput">
+                    </div>
+                </div>
             
                 <!---------------------------------------------------- chức năng fan -------------------------------------------------------- -->                
                 <div class="fan">

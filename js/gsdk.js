@@ -358,6 +358,158 @@ document.getElementById('write').addEventListener('click', function(){
     database.ref("Control system").update({
         "Virtual run command/data": minVal,    });
 });
+//------------------realtime----------------
+var time = document.getElementById("current_time");
+setInterval(()=>{
+  var d = new Date();
+  time.innerHTML = d.toLocaleTimeString();
+},1000)
+var selectedTime;
+        var resetTime;
+        var timer;
+        var resetTimer;
+        var isTimerOn = false;
+
+        function handleChange() {
+            var input = document.getElementById("RCM");
+            var selectedValue = parseInt(input.value);
+            console.log("Selected value:", selectedValue);
+            
+            if (selectedValue === 2 || selectedValue === 4) {
+                selectedTime = document.getElementById("timeInput").value;
+                console.log("Selected time:", selectedTime);
+                if (isTimerOn) {
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        input.value = 1;
+                        console.log("Changing value to 1");
+                        saveValue(input.value);
+                    }, calculateMilliseconds(selectedTime));
+                }
+                localStorage.setItem('selectedTime', selectedTime);
+            }
+        }
+
+        function handleTimeChange() {
+            selectedTime = document.getElementById("timeInput").value;
+            console.log("Time changed to:", selectedTime);
+            handleChange();
+        }
+
+        function handleResetTimeChange() {
+            resetTime = document.getElementById("resetTimeInput").value;
+            console.log("Reset time changed to:", resetTime);
+            handleResetChange();
+        }
+
+        function handleResetChange() {
+            var input = document.getElementById("RCM");
+            if (resetTime && isTimerOn) {
+                clearTimeout(resetTimer);
+                resetTimer = setTimeout(function() {
+                    input.value = 2;
+                    console.log("Resetting value to 2");
+                    saveValue(input.value);
+                }, calculateMilliseconds(resetTime));
+                localStorage.setItem('resetTime', resetTime);
+            }
+        }
+
+        function calculateMilliseconds(time) {
+            var selectedHours = parseInt(time.split(":")[0]);
+            var selectedMinutes = parseInt(time.split(":")[1]);
+            var now = new Date();
+            var targetTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), selectedHours, selectedMinutes);
+            var currentTime = now.getTime();
+            var targetTimeMilliseconds = targetTime.getTime();
+            if (targetTimeMilliseconds < currentTime) {
+                targetTime.setDate(targetTime.getDate() + 1);
+            }
+            var milliseconds = targetTime.getTime() - currentTime;
+            console.log("Milliseconds until change:", milliseconds);
+            return milliseconds;
+        }
+
+        function saveValue(value) {
+            console.log("Saving value to database:", value);
+            // Thực hiện các thao tác lưu giá trị vào cơ sở dữ liệu Firebase
+            database.ref("Control system").update({
+                "Virtual run command/data": value
+            });
+        }
+
+        function toggleTimer() {
+            var onOffSwitch = document.getElementById("onOffSwitch");
+            isTimerOn = onOffSwitch.checked;
+            console.log("Timer is " + (isTimerOn ? "on" : "off"));
+
+            if (isTimerOn) {
+                handleChange(); // Start the timer if it's turned on
+                handleResetChange(); // Start the reset timer if it's turned on
+            } else {
+                clearTimeout(timer); // Stop the timer if it's turned off
+                clearTimeout(resetTimer); // Stop the reset timer if it's turned off
+            }
+        }
+
+        window.onload = function() {
+            var input = document.getElementById("RCM");
+            input.addEventListener("change", handleChange);
+
+            var saveButton = document.getElementById("write");
+            saveButton.addEventListener("click", function() {
+                var input = document.getElementById("RCM");
+                var selectedValue = parseInt(input.value);
+                console.log("Lưu giá trị:", selectedValue);
+                saveValue(selectedValue);
+            });
+
+            var timeInput = document.getElementById("timeInput");
+            timeInput.addEventListener("change", handleTimeChange);
+
+            var resetTimeInput = document.getElementById("resetTimeInput");
+            resetTimeInput.addEventListener("change", handleResetTimeChange);
+
+            var onOffSwitch = document.getElementById("onOffSwitch");
+            onOffSwitch.addEventListener("change", toggleTimer);
+
+            // Load saved times from localStorage and set the timers
+            var savedSelectedTime = localStorage.getItem('selectedTime');
+            var savedResetTime = localStorage.getItem('resetTime');
+            if (savedSelectedTime) {
+                document.getElementById("timeInput").value = savedSelectedTime;
+                selectedTime = savedSelectedTime;
+            }
+            if (savedResetTime) {
+                document.getElementById("resetTimeInput").value = savedResetTime;
+                resetTime = savedResetTime;
+            }
+            if (isTimerOn) {
+                handleChange();
+                handleResetChange();
+            }
+        };
+        function toggleTimer() {
+            var onOffSwitch = document.getElementById("onOffSwitch");
+            isTimerOn = onOffSwitch.checked;
+            console.log("Timer is " + (isTimerOn ? "on" : "off"));
+        
+            if (isTimerOn) {
+                handleChange(); // Start the timer if it's turned on
+                handleResetChange(); // Start the reset timer if it's turned on
+            } else {
+                clearTimeout(timer); // Stop the timer if it's turned off
+                clearTimeout(resetTimer); // Stop the reset timer if it's turned off
+            }
+        
+            // Nếu đang ở trạng thái 1 và chuyển sang trạng thái 2, sau đó chuyển lại trạng thái 1
+            if (!isTimerOn && document.getElementById("RCM").value === "1") {
+                document.getElementById("RCM").value = "2";
+                console.log("Changing value to 2");
+                saveValue(2);
+            }
+}
+
 database.ref("Control system/Virtual run command/data").on("value", function(snapshot){
     var chaythuan = snapshot.val();
     if(chaythuan==2){
@@ -384,19 +536,46 @@ database.ref("Monitor system/Output frequecy/data").on("value", function(snapsho
         // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
     }
 })
-database.ref("Control system/Virtual run command/data").on("value", function(snapshot){
-    var chaynghich = snapshot.val();
-    if(chaynghich==4){
-        document.getElementById("chaynghich").innerHTML = "ON";
+database.ref("Monitor system/den bao nut nhan/data").on("value", function(snapshot){
+    var chay = snapshot.val();
+    if(chay==1){
+        document.getElementById("chay").innerHTML = "ON";
         document.getElementById("dungs").src = "img/on.png";
         // document.getElementById("close_open_return_ngoai").src = "img/on.png";
     }
     else{
-        document.getElementById("chaynghich").innerHTML = "OFF";
+        document.getElementById("chay").innerHTML = "OFF";
         document.getElementById("dungs").src = "img/off.png"; 
         // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
     }
 })
+database.ref("Control system/Virtual enable DO 06/data").on("value", function(snapshot){
+    var chay = snapshot.val();
+    if(chay==1){
+        document.getElementById("chay").innerHTML = "";
+        document.getElementById("manualid").src = "img/on.png";
+        // document.getElementById("close_open_return_ngoai").src = "img/on.png";
+    }
+    else{
+        document.getElementById("chay").innerHTML = "";
+        document.getElementById("manualid").src = "img/off.png"; 
+        // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
+    }
+})
+database.ref("Control system/Virtual enable DO 06/data").on("value", function(snapshot){
+    var chay = snapshot.val();
+    if(chay==0){
+        document.getElementById("chays").innerHTML = "";
+        document.getElementById("autolid").src = "img/on.png";
+        // document.getElementById("close_open_return_ngoai").src = "img/on.png";
+    }
+    else{
+        document.getElementById("chay").innerHTML = "";
+        document.getElementById("autolid").src = "img/off.png"; 
+        // document.getElementById("close_open_return_ngoai").src = "img/off.png"; 
+    }
+})
+//--
 
 
 document.getElementById('write').addEventListener('click', function(){
@@ -589,50 +768,55 @@ var mohinh = document.getElementById("mohinh");
  function function_voltage() {        
     mohinh.style.display = "none";
     giamsatdienap.style.display = "block";
+    giamsatdienap.style.opacity=1;
     giamsatdongdien.style.display = "none";
-    giamsattanso.style.display = "none"
-    giamsattocdo.style.display = "none"
-    giamsatcongsuat.style.display = "none"        
+    giamsattanso.style.display = "none";
+    giamsattocdo.style.display = "none";
+    giamsatcongsuat.style.display = "none";        
 }
 function function_gsdk() {        
     mohinh.style.display = "block";
     giamsatdienap.style.display = "none";
     giamsatdongdien.style.display = "none";
-    giamsattanso.style.display = "none"
-    giamsattocdo.style.display = "none"
-    giamsatcongsuat.style.display = "none"        
+    giamsattanso.style.display = "none";
+    giamsattocdo.style.display = "none";
+    giamsatcongsuat.style.display = "none";       
 }
 function function_current() {        
     mohinh.style.display = "none";
     giamsatdienap.style.display = "none";
     giamsatdongdien.style.display = "block";
-    giamsattanso.style.display = "none"
-    giamsattocdo.style.display = "none" 
-    giamsatcongsuat.style.display = "none"          
+    giamsatdongdien.style.opacity=1;
+    giamsattanso.style.display = "none";
+    giamsattocdo.style.display = "none"; 
+    giamsatcongsuat.style.display = "none";          
 }
 function function_frequency() {        
     mohinh.style.display = "none";
     giamsatdienap.style.display = "none";
     giamsatdongdien.style.display = "none";
-    giamsattanso.style.display = "block" 
-    giamsattocdo.style.display = "none" 
-    giamsatcongsuat.style.display = "none"         
+    giamsattanso.style.display = "block"; 
+    giamsattanso.style.opacity=1;
+    giamsattocdo.style.display = "none"; 
+    giamsatcongsuat.style.display = "none";         
 }
 function function_speed() {        
     mohinh.style.display = "none";
     giamsatdienap.style.display = "none";
     giamsatdongdien.style.display = "none";
-    giamsattanso.style.display = "none"
-    giamsattocdo.style.display = "block" 
-    giamsatcongsuat.style.display = "none"        
+    giamsattanso.style.display = "none";
+    giamsattocdo.style.display = "block";
+    giamsattocdo.style.opacity=1; 
+    giamsatcongsuat.style.display = "none";        
 }
 function function_power() {        
     mohinh.style.display = "none";
     giamsatdienap.style.display = "none";
     giamsatdongdien.style.display = "none";
-    giamsattanso.style.display = "none"
-    giamsattocdo.style.display = "none"
-    giamsatcongsuat.style.display = "block"    
+    giamsattanso.style.display = "none";
+    giamsattocdo.style.display = "none";
+    giamsatcongsuat.style.display = "block";
+    giamsatcongsuat.style.opacity=1;    
 }
 
 //---------------DIENAP-------------------
@@ -710,9 +894,11 @@ var content_row_voltage = document.querySelectorAll(".content-row-voltage");
 var time_voltage = [];
 var value_voltage = [];
 var j = 0;
+var Voltage = 0;
+var chartIntervalvoltage, historyIntervalvoltage;
     database.ref("Monitor system/Output voltage/data").on("value", function (snapshot) {
         //----------------------------- Gauge ----------------------------
-        var Voltage = snapshot.val();
+        Voltage = snapshot.val();
         document.getElementById("volt").innerHTML = Voltage + " V";    
         
         var target_voltage = document.getElementById('gauge-voltage'); // your canvas element
@@ -722,25 +908,24 @@ var j = 0;
     
         gauge_voltage.maxValue = 400; // set max gauge value
         gauge_voltage.set(Voltage);
+                //----------------------------- Chart ----------------------------
+        // Cập nhật biểu đồ ngay lập tức khi có dữ liệu mới
+        updateChartvoltage(Voltage);
+        //----------------------------- Table ----------------------------
+        // Cập nhật dữ liệu lịch sử ngay lập tức khi có dữ liệu mới
+        updateHistoryDatavoltage(Voltage);
+    });
         //----------------------------- Chart ----------------------------
-        var time = new Date().toLocaleTimeString();
-        const data = getArr(chart_voltage.data.datasets[0].data, Voltage);
-        const labels = getArr(chart_voltage.data.labels, time);
-        chart_voltage.data.labels = labels
-        chart_voltage.data.datasets[0].data = data
-        chart_voltage.update();
-        
-        interval = setInterval(() => {
+        function updateChartvoltage(Voltage) {
             var time = new Date().toLocaleTimeString();
-            const currentVal = chart_voltage.data.datasets[0].data[chart_voltage.data.datasets[0].data.length - 1]
-            const data = getArr(chart_voltage.data.datasets[0].data, currentVal)
-            const labels = getArr(chart_voltage.data.labels, time)
+            const data = getArr(chart_voltage.data.datasets[0].data, Voltage);
+            const labels = getArr(chart_voltage.data.labels, time);
             chart_voltage.data.labels = labels
             chart_voltage.data.datasets[0].data = data
             chart_voltage.update();
-        }, 1000);
+        }
 
-        interval = setInterval(() => {
+        function updateHistoryDatavoltage(Voltage) { 
             var time_now = new Date();
             if (j <= 6) {
                 time_voltage[j] = time_now.getHours() + ":" + time_now.getMinutes() + ":" + time_now.getSeconds();
@@ -777,8 +962,20 @@ var j = 0;
             content_row_voltage[13].innerHTML = value_voltage[5] + " V";
             content_row_voltage[14].innerHTML = time_voltage[6];
             content_row_voltage[15].innerHTML = value_voltage[6] + " V";
-        }, 2000);
-    });
+        }
+        // Bắt đầu cập nhật biểu đồ mỗi giây nếu chưa có
+        if (!chartIntervalvoltage) {
+            chartInterval = setInterval(() => {
+                updateChartvoltage(Voltage);
+            }, 1000);
+        }
+        
+        // Bắt đầu cập nhật dữ liệu lịch sử mỗi giây nếu chưa có
+        if (!historyIntervalvoltage) {
+            historyInterval = setInterval(() => {
+                updateHistoryDatavoltage(Voltage);
+            }, 1000);
+        }
 // -------DONGDIEN------/
 var opts_current = {
     angle: -0.2,
@@ -840,9 +1037,13 @@ var content_row_current = document.querySelectorAll(".content-row-current");
 var time_current = [];
 var value_current = [];
 var j = 0;
+var current_out=0;
+   // Đảm bảo rằng setInterval chỉ được tạo một lần
+   var chartIntervalcurrent, historyIntervalcurrent;
+
     database.ref("Monitor system/Output current/data").on("value", function (snapshot) {
         //----------------------------- Gauge ----------------------------
-        var current_out = snapshot.val();
+        current_out = snapshot.val();
         document.getElementById("current").innerHTML = current_out + " A";    
         
         var target_current = document.getElementById('gauge-current'); // your canvas element
@@ -852,32 +1053,30 @@ var j = 0;
     
         gauge_current.maxValue = 400; // set max gauge value
         gauge_current.set(current_out);
+             //----------------------------- Chart ----------------------------
+        // Cập nhật biểu đồ ngay lập tức khi có dữ liệu mới
+        updateChartcurrent(current_out);
+        //----------------------------- Table ----------------------------
+        // Cập nhật dữ liệu lịch sử ngay lập tức khi có dữ liệu mới
+        updateHistoryDatacurrent(current_out);
+    });
         //----------------------------- Chart ----------------------------
-        var time = new Date().toLocaleTimeString();
-        const data = getArr(chart_current.data.datasets[0].data, current_out);
-        const labels = getArr(chart_current.data.labels, time);
-        chart_current.data.labels = labels
-        chart_current.data.datasets[0].data = data
-        chart_current.update();
-        
-        interval = setInterval(() => {
+        function updateChartcurrent(current_out) {
             var time = new Date().toLocaleTimeString();
-            const currentVal = chart_current.data.datasets[0].data[chart_current.data.datasets[0].data.length - 1]
-            const data = getArr(chart_current.data.datasets[0].data, currentVal)
-            const labels = getArr(chart_current.data.labels, time)
-            chart_current.data.labels = labels
-            chart_current.data.datasets[0].data = data
+            const data = getArr(chart_current.data.datasets[0].data, current_out);
+            const labels = getArr(chart_current.data.labels, time);
+            chart_current.data.labels = labels;
+            chart_current.data.datasets[0].data = data;
             chart_current.update();
-        }, 1000);
+        }
 
-        interval = setInterval(() => {
+        function updateHistoryDatacurrent(current_out) {
             var time_now = new Date();
             if (j <= 6) {
                 time_current[j] = time_now.getHours() + ":" + time_now.getMinutes() + ":" + time_now.getSeconds();
                 value_current[j] = current_out;
                 j++;
-            }
-            else {
+            } else {
                 time_current[0] = time_current[1];
                 value_current[0] = value_current[1];
                 time_current[1] = time_current[2];
@@ -907,8 +1106,20 @@ var j = 0;
             content_row_current[13].innerHTML = value_current[5] + " A";
             content_row_current[14].innerHTML = time_current[6];
             content_row_current[15].innerHTML = value_current[6] + " A";
+        }
+        // Bắt đầu cập nhật biểu đồ mỗi giây nếu chưa có
+    if (!chartIntervalcurrent) {
+        chartInterval = setInterval(() => {
+            updateChartcurrent(current_out);
         }, 1000);
-    });    
+    }
+    
+    // Bắt đầu cập nhật dữ liệu lịch sử mỗi giây nếu chưa có
+    if (!historyIntervalcurrent) {
+        historyInterval = setInterval(() => {
+            updateHistoryDatacurrent(current_out);
+        }, 1000);
+    }       
     // ----------------tanso------------------
 var opts_frequency = {
         angle: -0.2,
@@ -1231,9 +1442,11 @@ var content_row_power = document.querySelectorAll(".content-row-power");
 var time_power = [];
 var value_power = [];
 var j = 0;
+var power_out=0;
+var chartIntervalpower, historyIntervalpower;
 database.ref("Monitor system/Output Power/data").on("value", function (snapshot) {
     //----------------------------- Gauge ----------------------------
-    var power_out = snapshot.val();
+     power_out = snapshot.val();
     document.getElementById("power").innerHTML = power_out + " kW";    
 
     var target_power = document.getElementById('gauge-power'); // your canvas element
@@ -1243,25 +1456,24 @@ database.ref("Monitor system/Output Power/data").on("value", function (snapshot)
 
     gauge_power.maxValue = 0.85; // set max gauge value
     gauge_power.set(power_out);
-    //----------------------------- Chart ----------------------------
-    var time = new Date().toLocaleTimeString();
-    const data = getArr(chart_power.data.datasets[0].data, power_out);
-    const labels = getArr(chart_power.data.labels, time);
-    chart_power.data.labels = labels
-    chart_power.data.datasets[0].data = data
-    chart_power.update();
+     //----------------------------- Chart ----------------------------
+        // Cập nhật biểu đồ ngay lập tức khi có dữ liệu mới
+        updateChartpower(power_out);
+        //----------------------------- Table ----------------------------
+        // Cập nhật dữ liệu lịch sử ngay lập tức khi có dữ liệu mới
+        updateHistoryDatapower(power_out);
+    });
     
-    interval = setInterval(() => {
+    function updateChartpower(power_out) {
         var time = new Date().toLocaleTimeString();
-        const powerVal = chart_power.data.datasets[0].data[chart_power.data.datasets[0].data.length - 1]
-        const data = getArr(chart_power.data.datasets[0].data, powerVal)
-        const labels = getArr(chart_power.data.labels, time)
-        chart_power.data.labels = labels
-        chart_power.data.datasets[0].data = data
+        const data = getArr(chart_power.data.datasets[0].data, power_out);
+        const labels = getArr(chart_power.data.labels, time);
+        chart_power.data.labels = labels;
+        chart_power.data.datasets[0].data = data;
         chart_power.update();
-    }, 1000);
+    }
 
-    interval = setInterval(() => {
+    function updateHistoryDatapower(power_out) {
         var time_now = new Date();
         if (j <= 6) {
             time_power[j] = time_now.getHours() + ":" + time_now.getMinutes() + ":" + time_now.getSeconds();
@@ -1299,6 +1511,18 @@ database.ref("Monitor system/Output Power/data").on("value", function (snapshot)
         content_row_power[14].innerHTML = time_power[6];
         content_row_power[15].innerHTML = value_power[6] + " Kw";
 
-    }, 2000);
-});
+    }
+// Bắt đầu cập nhật biểu đồ mỗi giây nếu chưa có
+if (!chartIntervalpower) {
+    chartInterval = setInterval(() => {
+        updateChartpower(power_out);
+    }, 1000);
+}
+
+// Bắt đầu cập nhật dữ liệu lịch sử mỗi giây nếu chưa có
+if (!historyIntervalpower) {
+    historyInterval = setInterval(() => {
+        updateHistoryDatapower(power_out);
+    }, 1000);
+}
 

@@ -1,13 +1,13 @@
 //---------------------liên kết với firebase----------------------
 const firebaseConfig = {
-    apiKey: "AIzaSyB0YAOQJEYpzk9WngOZN2Ib6YAfDZZ78LY",
-    authDomain: "vinhzuto29.firebaseapp.com",
-    databaseURL: "https://vinhzuto29-default-rtdb.firebaseio.com",
-    projectId: "vinhzuto29",
-    storageBucket: "vinhzuto29.appspot.com",
-    messagingSenderId: "958813278972",
-    appId: "1:958813278972:web:08d34aa9d3059973283d79",
-    measurementId: "G-XH2C1SZ3MF"
+    apiKey: "AIzaSyB9jToRiobNMwscPhObOrKgxsnj2JTi_w4",
+    authDomain: "datn-finalll.firebaseapp.com",
+    databaseURL: "https://datn-finalll-default-rtdb.firebaseio.com",
+    projectId: "datn-finalll",
+    storageBucket: "datn-finalll.appspot.com",
+    messagingSenderId: "82955896777",
+    appId: "1:82955896777:web:d97e8a74cc242249fbca18",
+    measurementId: "G-8WXSMX60YD"
   };
 
 

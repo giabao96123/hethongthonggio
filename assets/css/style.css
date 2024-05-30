@@ -6,36 +6,43 @@
 }
 /*vị trí - kích thước (chiều rộng- chiều cao)- màu sắc- kiểu chữ- hình dạng*/
 
-html{
-    font-family: Arial, Helvetica, sans-serif; /* kiểu chữ */
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
     scroll-behavior: smooth;
-} 
+}
 
 #main {
-
+    width: 100%;
 }
 
 #header {
-    height: 70px;
-    background-color: #073f7e;
+    height: 40px;
+    background-color: #074c95;
+    display: flex;
+    justify-content: flex-start; /* căn trái các mục */
 }
 
-/* #hearder .fa-solid{
-    
-} */
+#nav {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: left; /* căn trái các mục */
+}
 
-#nav li{
-    display: inline-block; /* viết ngang*/
+#nav li {
+    display: inline-block;
 }
 
 #nav li a {
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     text-decoration: none;
-    line-height: 70px;
-    padding: 0px 24px 0px 24px;
+    line-height: 40px;
+    padding: 0 24px;
     display: inline-block;
-    text-transform: uppercase; /* viết hoa*/
+    text-transform: uppercase;
 }
 
 #nav li a:hover {
@@ -43,14 +50,38 @@ html{
     background-color: darkblue;
 }
 
-#slider {
-    padding-top: 50%;
-    background: url('/img/slider 1.jpg') top center / cover no-repeat;
+#content {
+    padding: 20px;
 }
 
-/* #content {
+h1, h2, h3, h4, h5, h6, p, li {
+    font-size: 20px; /* Đặt cỡ chữ 20px */
+}
 
-} */
+h1, h2, h3, h4, h5, h6 {
+    color: black; /* Màu chữ đen */
+    margin-left: 20px; /* Khoảng cách lề trái 20px */
+    margin-right: 20px; /* Khoảng cách lề phải 20px */
+    font-weight: bold; /* In đậm */
+}
+
+p, li {
+    margin-left: 50px; /* Khoảng cách lề trái 25px */
+    margin-right: 50px; /* Khoảng cách lề phải 20px */
+    line-height: 1.5; /* Độ giãn dòng */
+    text-indent: 0; /* Loại bỏ sự thụt vào lề */
+    text-align: justify;
+}
+
+/* Tạo bộ đếm cho tiêu đề */
+body {
+    counter-reset: headerCounter;
+}
+
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+    counter-increment: headerCounter;
+    content: counter(headerCounter, upper-roman) ". ";
+}
 
 #content .content-section {
     width: 1200px;

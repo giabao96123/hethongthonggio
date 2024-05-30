@@ -66,8 +66,8 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    margin-left: 350px;
-    margin-right: 350px;
+    margin-left: 318px;
+    margin-right: 318px;
     border-radius: 15px;
     border: 4px solid #073f7e;
 }
@@ -83,8 +83,8 @@ body{
     flex-direction: column; /* Xếp chúng theo chiều dọc */
     justify-content: center; /* Căn giữa theo chiều dọc */
     align-items: center; /* Căn giữa theo chiều ngang */
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
     padding: 3px;
     border-radius: 10px;
     text-align: center;
@@ -102,83 +102,14 @@ body{
 
 
 /* --------------------------Mô hình--------------------  */
-/* #content #mohinh{
-
-} */
-
-/* .chiller{
-    position: absolute;
-    top: 600px;
-    left: 30px;
-    z-index: 1;
-} */
-
-/* .pipe1{
-    position: absolute;
-    top: 650px;
-    left: 675px;
-    z-index: 1;
-}
-
-.pipe2{
-    position: absolute;
-    top: 770px;
-    left: 675px;
-    z-index: 1;
-}
-
-.valvebypass{
-    transform: rotate(90deg);
-    position: absolute;
-    top: 647px;
-    left: 730px;
-    z-index: 0;
-    
-} */
 #trangthai {
     font-size: 16px;
     color: rgb(0, 0, 0);
     /* font-weight: bold; */
     position: absolute;
-    top: 287px;
-    left: 738px
+    top: 292px;
+    left: 742px
     
-}
-#trangthai {
-    font-size: 16px;
-    color: rgb(0, 0, 0);
-    /* font-weight: bold; */
-    position: absolute;
-    top: 287px;
-    left: 738px
-    
-}
-.valvesupply{
-    position: absolute;
-    top: 560px;
-    left: 848px;
-    z-index: 0;
-}
-
-.valvereturn{
-    position: absolute;
-    top: 687px;
-    left: 848px;
-    z-index: 0;
-}
-
-.pipethang1-1{
-    position: absolute;
-    top: 649px;
-    left: 397px;
-    z-index: 1;
-}
-
-.pipethang2-1{
-    position: absolute;
-    top: 776px;
-    left: 397px;
-    z-index: 1;
 }
 
 .tempsensor1{
@@ -192,83 +123,6 @@ body{
     top: 590px;
     left: 591px;
     z-index: 2;
-}
-
-.pipethang1-2{
-    position: absolute;
-    top: 649px;
-    left: 525px;
-    z-index: 1;
-}
-
-.pipethang2-2{
-    position: absolute;
-    top: 776px;
-    left: 525px;
-    z-index: 1;
-}
-
-.presensor1{
-    position: absolute;
-    top: 617px;
-    left: 597px;
-    z-index: 1;
-}
-.presensor2{
-    position: absolute;
-    top: 743px;
-    left: 597px;
-    z-index: 1;
-}
-.pipethang1-3{
-    position: absolute;
-    top: 649px;
-    left: 968px;
-    z-index: 1;
-}
-
-.pipethang2-3{
-    position: absolute;
-    top: 776px;
-    left: 968px;
-    z-index: 1;
-}
-
-.co1{
-    position: absolute;
-    top: 657px;
-    left: 1040px;
-    z-index: 1;
-}
-
-.co2{
-    position: absolute;
-    top: 784px;
-    left: 1088px;
-    z-index: 1;
-}
-
-.pipethang1-4{
-    position: absolute;
-    top: 457px;
-    left: 1035px;
-    z-index: 1;
-}
-
-.pipethang2-4{
-    position: absolute;
-    top: 458px;
-    left: 1082px;
-    z-index: 1;
-}
-
-
-
-.pipethang1-5{
-    position: absolute;
-    top: 845px;
-    left: 690px;
-
 }
 #ahu1{
     position: absolute;
@@ -308,6 +162,12 @@ body{
     left: 560px;
     z-index: 1;
 }
+.hcmute1{
+    position: absolute;
+    top: 135px;
+    left: 320px;
+    z-index: 1;
+}
 
 .fan{
     position: absolute;
@@ -318,23 +178,48 @@ body{
 }
 /* -------------------------------- */
 /* nhietdo */
-.gsnds{
+.gsnds {
     width: 150px;
-    line-height: 2;
     font-style: normal;
-    font-weight: bold;
     font-size: 13px;
-    width: 150px;
     justify-content: center;
     text-align: center;
     color: rgb(33, 29, 29);
-    background:rgba(239, 239, 238, 0.941);
+    background: #ffffff;
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: absolute;
-    top: 465px;
+    top: 605px;
     left: 405px;
+    line-height: 1; /* Đặt line-height thành 1 để loại bỏ khoảng cách giữa các hàng */
+    padding: 5px 0; /* Đảm bảo khoảng cách trên và dưới là 5px */
+    margin: 0; /* Đảm bảo không có khoảng cách thêm bên ngoài phần tử */
 }
+
+.temperature-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 5px; /* Một chút khoảng cách từ dòng trước đó */
+}
+
+.temperature-value {
+    color: red; /* Màu đỏ cho giá trị nhiệt độ */
+    font-size: 19px; /* Đặt kích thước chữ cho giá trị nhiệt độ */
+    font-weight: bold; /* Đảm bảo giá trị nhiệt độ nổi bật */
+    margin: 0; /* Đảm bảo không có khoảng cách thêm bên ngoài phần tử */
+}
+
+.temperature-unit {
+    color: black; /* Màu đen cho ký hiệu nhiệt độ */
+    font-size: 19px; /* Đặt kích thước chữ cho ký hiệu nhiệt độ */
+    font-weight: bold; /* Đảm bảo ký hiệu nhiệt độ nổi bật */
+    margin-left: 5px; /* Thêm khoảng cách nhỏ giữa giá trị nhiệt độ và đơn vị */
+    margin: 0; /* Đảm bảo không có khoảng cách thêm bên ngoài phần tử */
+}
+
+
+
 .controldongcothuan{
     width: 150px;
     line-height: 2;
@@ -345,14 +230,15 @@ body{
     justify-content: center;
     text-align: center;
     color: rgb(33, 29, 29);
-    background:rgba(239, 239, 238, 0.941);
+    background: #ffffff;
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: absolute;
-    top: 325px;
+    top: 435px;
     left: 405px;
 }
-.controldenbao{
+
+.controldenbaooff{
     width: 150px;
     line-height: 2;
     font-style: normal;
@@ -362,13 +248,30 @@ body{
     justify-content: center;
     text-align: center;
     color: rgb(33, 29, 29);
-    background:rgba(239, 239, 238, 0.941);
+    background: #ffffff;
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: absolute;
-    top: 325px;
+    top: 425px;
     left: 945px;
 }
+.controldenbaoon{
+    width: 150px;
+    line-height: 2;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    justify-content: center;
+    text-align: center;
+    color: rgb(33, 29, 29);
+    background: #ffffff;
+    border-radius: 9px;
+    border: 2px solid rgb(4, 0, 255);
+    position: absolute;
+    top: 415px;
+    left: 945px;
+}
+
 .gsndr{
     width: 150px;
     line-height: 2;
@@ -383,22 +286,75 @@ body{
     left: 445px;
 }
 /* nongdoco */
-.gsass{    
-    line-height: 2;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 13px;
+.gsass {
     width: 150px;
+    font-style: normal;
+    font-size: 13px;
     justify-content: center;
     text-align: center;
     color: rgb(33, 29, 29);
-    background:rgba(239, 239, 238, 0.941);
+    background: #ffffff;
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: absolute;
-    top: 465px;
+    top: 605px;
     left: 945px;
+    padding: 5px 0; /* Đảm bảo khoảng cách trên và dưới là 5px */
+    margin: 0; /* Đảm bảo không có khoảng cách thêm bên ngoài phần tử */
 }
+
+.concentration-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 2px; /* Một chút khoảng cách từ dòng trước đó */
+    /* line-height: 1.5; Điều chỉnh line-height nếu cần thiết để khoảng cách giữa các hàng phù hợp */
+}
+
+.concentration-value {
+    color: red; /* Màu đỏ cho giá trị nồng độ */
+    font-size: 19px; /* Đặt kích thước chữ cho giá trị nồng độ */
+    font-weight: bold; /* Đảm bảo giá trị nồng độ nổi bật */
+    margin: 0; /* Đảm bảo không có khoảng cách thêm bên ngoài phần tử */
+}
+
+.concentration-unit {
+    color: rgb(0, 0, 0); /* Màu đen cho ký hiệu nồng độ */
+    font-size: 19px; /* Đặt kích thước chữ cho ký hiệu nồng độ */
+    font-weight: bold; /* Đảm bảo ký hiệu nồng độ nổi bật */
+    margin-left: 5px; /* Thêm khoảng cách nhỏ giữa giá trị nồng độ và đơn vị */
+    margin: 0; /* Đảm bảo không có khoảng cách thêm bên ngoài phần tử */
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.co-alert {
+    position: absolute;
+    top: 150px;
+    right: 20px;
+    padding: 15px;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: blink 1s infinite; /* Thêm hiệu ứng nhấp nháy */
+}
+
+.co-alert span {
+    margin-left: 10px;
+}
+
+
+
+
 
 .gsasr{
     width: 100px;
@@ -468,48 +424,6 @@ body{
     padding-bottom: 5px;
 }
 
-/* #supply_valve{
-    float: right;
-}
-
-#return_valve{
-    float: right;
-}
-
-#bypass_valve{
-    float: right;
-}
-
-#close_open_supply{
-    float: right;  
-}
-
-#close_open_supply_ngoai{
-    position: absolute;
-    top: 610px;
-    left: 910px;
-}
-
-#close_open_return{
-    float: right;
-}
-
-#close_open_return_ngoai{
-    position: absolute;
-    top: 738px;
-    left: 910px;
-}
-
-#close_open_bypass{
-    float: right;
-}
-
-#close_open_bypass_ngoai{
-    rotate: 90deg;
-    position: absolute;
-    top: 717px;
-    left: 818px;
-} */
 
 .control_onoff{
     line-height: 2;
@@ -520,11 +434,11 @@ body{
     justify-content: center;
     text-align: center;
     color: rgb(33, 29, 29);
-    background:rgba(239, 239, 238, 0.941);
+    background: #ffffff;
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: absolute;
-    top: 565px;
+    top: 520px;
     left: 945px;
 }
 
@@ -545,12 +459,44 @@ body{
     justify-content: center;
     text-align: center;
     color: rgb(33, 29, 29);
-    background:rgba(239, 239, 238, 0.941);
+    background: #ffffff;
     border-radius: 9px;
     border: 2px solid rgb(4, 0, 255);
     position: absolute;
-    top: 565px;
+    top: 520px;
     left: 405px;
+}
+.nhiet-text {
+    display: block; /* Đảm bảo chữ "ON" và "OFF" nằm ngay dưới chữ "Co gas arlam" */
+    margin: 0; /* Loại bỏ khoảng cách mặc định giữa các dòng */
+    padding: 0; /* Loại bỏ khoảng cách mặc định giữa các dòng */
+    line-height: 1; /* Loại bỏ khoảng cách giữa các dòng */
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.temp-alert {
+    position: absolute;
+    top: 210px; /* Điều chỉnh vị trí theo nhu cầu */
+    right: 20px;
+    padding: 15px;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: blink 1s infinite; /* Thêm hiệu ứng nhấp nháy */
+}
+
+.temp-alert span {
+    margin-left: 10px;
 }
 
 .luu{
@@ -623,7 +569,7 @@ body{
     align-items: center;
     justify-content: center;
     flex: 1; /* Để các khối có cùng kích thước */
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 6px;
     background-color: #ffffff;
     padding: 15px 5px;
@@ -1211,7 +1157,7 @@ input[type="time"] {
     width: 270px;
     height: 70px;
     align-items: center;
-    top: 100px;
+    top: 120px;
     right: 20px;
     background-color: #ffffff;
     overflow: hidden;
@@ -1228,7 +1174,7 @@ input[type="time"] {
     width: 270px;
     height: 70px;
     align-items: center;
-    top: 100px;
+    top: 40px;
     right: 20px;
     background-color: #ffffff;
     overflow: hidden;
@@ -1245,7 +1191,7 @@ input[type="time"] {
     width: 270px;
     height: 70px;
     align-items: center;
-    top: 100px;
+    top: 40px;
     right: 20px;
     background-color: #ffffff;
     overflow: hidden;
@@ -1262,7 +1208,7 @@ input[type="time"] {
     width: 270px;
     height: 70px;
     align-items: center;
-    top: 100px;
+    top: 40px;
     right: 20px;
     background-color: #ffffff;
     overflow: hidden;
@@ -1289,7 +1235,34 @@ input[type="time"] {
     top: 30%;
     left: 5%;
 }
-
+.lock-icon {
+    position: absolute;
+    width: 10%;
+    height: auto;
+    top: 30%;
+    left: 5%;
+}
+.unlock-icon {
+    position: absolute;
+    width: 10%;
+    height: auto;
+    top: 30%;
+    left: 5%;
+}
+.green-icon {
+    position: absolute;
+    width: 10%;
+    height: auto;
+    top: 30%;
+    left: 5%;
+}
+.red-icon {
+    position: absolute;
+    width: 10%;
+    height: auto;
+    top: 30%;
+    left: 5%;
+}
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0px rgba(0, 255, 255, 0.7);
@@ -1297,4 +1270,92 @@ input[type="time"] {
     100% {
         box-shadow: 0 0 0 30px rgba(0, 255, 255, 0);
     }
+}
+/* setthoigian */
+/* body1 {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+} */
+
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+} */
+
+.container {
+    background-color: #fff;
+    position: absolute; /* Hoặc position: fixed; */
+    top: 200px; /* Khoảng cách từ đỉnh */
+    left: 1200px; /* Khoảng cách từ bên trái */
+    width: 200px; /* Chiều rộng */
+    height: 410px; /* Chiều cao */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* input, select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: calc(100% - 22px); /* Để tính toán đúng padding */
+ 
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+    width: 100px; /* Đặt chiều rộng cụ thể cho nút */
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.container input{
+    margin-top: 5px;
+}
+
+.container select{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    min-width: 120px;
+    height: 30px;
+
 }

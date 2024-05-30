@@ -36,151 +36,103 @@
     <div id="main">       
         <div id="header">
             <ul id="nav">
-                <li><a href="index.html">Trang chủ</a></li>
-                <li><a href="tongquan.html">Tổng quan</a></li>
-                <li><a href="mohinh.html">Mô hình</a></li>
+                <li><a href="index.html">Trang chủ </a></li>
+                <!-- <li><a href="tongquan.html">Tổng quan</a></li> -->
+                <!-- <li><a href="mohinh.html">Mô hình</a></li> -->
                 <li><a href="#" onclick="function_gsdk()">Giám sát - Điều khiển</a></li>
-                <li><a href="thongtinlienhe.html">More</a></li>
+                <!-- <li><a href="thongtinlienhe.html">More</a></li> -->
             </ul>
         </div>
         <div id="content">
             <div class="header2">
-                <img src="img\logo HCMUTE.jpg" alt="" width="90" height="100" >
+                <img src="img/logo_HCMUTE-removebg-preview.png" alt="" width="87" height="95" >
                 <div class="text">
                     <h1 class="title">ĐỒ ÁN TỐT NGHIỆP</h1>
-                    <h2 class="title">Ứng dụng BMS điều khiển và giám sát hệ thống thông gió </h2>
+                    <h2 class="title">Ứng dụng BMS điều khiển và giám sát hệ thống thông gió tầng hầm </h2>
                     <h3 class="title">Cảnh báo khí Co và nhiệt độ </h3>
                 </div>
-                <img src="img\logo FEEE.jpg" alt=""width="100" height="100">
+                <img src="img/logo_FEEE-removebg-preview.png" alt=""width="100" height="95">
             </div>
             <div id="mohinh">
                 <div class="gsnds">
-                    <h2 >Nhiệt Độ Hầm <span id="nhietdosupply"></span> °C </h2>
+                    <h2>Basement temperature:</h2>
+                    <div class="temperature-container">
+                        <span id="nhietdosupply" class="temperature-value"></span><span class="temperature-unit">°C</span>
+                    </div>
                 </div>
+                <div id="tempAlert" class="temp-alert" style="display: none;">
+                    <span id="tempAlertMessage">Cảnh báo: Nhiệt độ vượt quá 45°C!</span>
+                </div>
+                
+                
+                
                 <!-- <div class="gsndr">
                     <h2 ><span id="nhietdoreturn"></span> °C </h2>
                 </div> -->
                 <div class="gsass">
-                    <h2 >Nồng Độ Khí Co : <span id="apsuatsupply"></span> Npm </h2>
+                    <h2>CO gas concentration:</h2>
+                    <div class="concentration-container">
+                        <span id="apsuatsupply" class="concentration-value"></span><span class="concentration-unit">ppm</span>
+                    </div>
                 </div>
-                <!-- <div class="gsasr">
-                    <h2 ><span id="apsuatreturn"></span> Bar </h2>
-                </div> -->
-                <!-- <img class="chiller" src="hinh\chiller.png" alt="" width="400px">
-                <img class="pipe1" src="hinh\pipe1.png" alt="ống" width="220px">
-                <img class="pipe2" src="hinh\pipe2.png" alt="ống"width="220px"> -->
-                <!---------------------------------------------------- chức năng valve -------------------------------------------------------- -->               
-                <!--  <div class="valvebypass">
-                    <button class="open_modal_btn"> <img src="hinh\valve.png" alt="" width="170px"></button>
-                </div>              
-                <div class="valvesupply">
-                    <button class="open_modal_btn"> <img src="hinh\valve.png" alt="" width="170px"></button>
+                <div id="coAlert" class="co-alert" style="display: none;">
+                    <span id="coAlertMessage">Cảnh báo: Nồng độ CO vượt mức cho phép!</span>
                 </div>
-                <div class="valvereturn">
-                    <button class="open_modal_btn"> <img src="hinh\valve.png" alt="" width="170px"></button>
-                </div>
-                <img id="close_open_supply_ngoai" src="img\on.png" alt="" width="37px">
-                <img id="close_open_return_ngoai" src="img\on.png" alt="" width="37px">
-                <img id="close_open_bypass_ngoai" src="img\on.png" alt="" width="37px">-->
+                
                 <div class="modal hide">
                     <div class="modal_inner">
                         <div class="modal_header">
                             <i class="fa-regular fa-circle-xmark"></i>
                         </div>
             
-                        <!-- <div class="modal_body">
-                            <h2 class="valve"> Valve Control </h2> 
-                            <div class="control_onoff">
-                                    <p>Supply Valve <span id="supply_valve">ON</span></p>
-                                <div>
-                                    <button id="btnOnId_01">ON</button>
-                                    <button id="btnOffId_01">OFF</button>
-                                    <img id="close_open_supply" src="img\on.png" alt="" width="37px">
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="modal_body">
-                            <div class="control_onoff">
-                                    <p>Return Valve <span id="return_valve">ON</span></p>
-                                <div>
-                                    <button id="btnOnId_02">ON</button>
-                                    <button id="btnOffId_02">OFF</button>
-                                    <img id="close_open_return" src="img\on.png" alt="" width="37px">
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="modal_body"> 
-                            <div class="control_onoff">
-                                    <p>Bypass Valve <span id="bypass_valve">ON</span></p>
-                                <div>
-                                    <button id="btnOnId_03">ON</button>
-                                    <button id="btnOffId_03">OFF</button>
-                                    <img id="close_open_bypass" src="img\on.png" alt="" width="37px">
-                                </div>
-                            </div>
-                        </div> -->
+                        
                     </div>
                 </div>
-                <!-- -------------------------------------------------------------------------------------------------------------------------------- -->
-                <!-- <img class="pipethang1-1" src="hinh\pipethang.png" alt="" height="58px">
-                <img class="pipethang2-1" src="hinh\pipethang.png" alt="" height="58px"> -->
+                
                 <div class="tempsensor1">
                     <img src="hinh/iconco2-removebg-preview.png" alt="" height="90px">
                 </div> 
                 <div class="tempsensor2">
                     <img src="hinh/icontemp-removebg-preview (1).png" alt="" height="90px">
                 </div>
-                <!-- <img class="pipethang1-2" src="hinh\pipethang.png" alt="" height="58px">
-                <img class="pipethang2-2" src="hinh\pipethang.png" alt="" height="58px">
-                <div class="presensor1">
-                    <img src="hinh\presensor.png" alt="" height="78px">
-                </div> -->
-                <!-- <div class="presensor2">
-                    <img src="hinh\presensor.png" alt="" height="78px">
-                </div>
-                <img class="pipethang1-3" src="hinh\pipethang.png" alt="" height="58px">
-                <img class="pipethang2-3" src="hinh\pipethang.png" alt="" height="58px" width="120px">
-                <img class="co1" src="hinh\co.png" alt="" height="37px">
-                <img class="co2" src="hinh\co.png" alt="" height="37px" >
-                <img class="pipethang1-4" src="hinh\pipethangdung.png" alt="" width="58px" height="200px">
-                <img class="pipethang2-4" src="hinh\pipethangdung.png" alt="" width="58px" height="329px"> -->
+               
                 <img id="ahu1" src="hinh/motor-gif_000_delay-0.03s.jpg" alt=""width="50px" >
                 <img id="ahu" src="hinh/motor.gif" alt=""width="50px" >
-                <!-- <img class="pipethang1-5" src="hinh/Alarm.gif" alt="" height="48px"> -->
-                <!-- <img class="co3 "src="hinh\co.png" alt="" height="37px">
-                <img class="pipethang1-6" src="hinh\pipethangdung.png" alt="" width="58px" height="200px"> -->
+               
                 <img class="hcmute" src="hinh/mo hinh 4.png" alt="" height="560px">
+                <img class="hcmute1" src="hinh/mo-hinh-5.gif" alt="" height="560px">
                 <div class="control_onoff">
-                    <p> Đèn Báo Khí Co <span id="supply_valve"></span></p>
+                    <p> Co arlam <span id="supply_valve"></span></p>
             
-                    <!-- <button id="btnOnId_01">ON</button>
-                    <button id="btnOffId_01">OFF</button> -->
-                    <img id="close_open_supply" src="img\on.png" alt="" width="37px">
+                   
+                    <img id="close_open_supply" src="img\on.png" alt="" width="30px">
                 </div>
                  <div class="controlnhiet">
-                    <p>Đèn Báo Nhiệt  <span id="return_valve"></span></p>
+                    <p>Heat arlam  <span id="return_valve"></span></p>
             
-                    <!-- <button id="btnOnId_01">ON</button>
-                    <button id="btnOffId_01">OFF</button> -->
-                    <img id="close_open_return" src="img\on.png" alt="" width="37px">
+                
+                    <img id="close_open_return" src="img\on.png" alt="" width="30px">
                  </div>
                  <div class="controldongcothuan">
-                    <p>Quạt Hút  <span id="chaythuan"></span></p>
+                    <p>Exhaust Fan  <span id="chaythuan"></span></p>
             
-                    <!-- <button id="btnOnId_01">ON</button>
-                    <button id="btnOffId_01">OFF</button> -->
-                    <img id="dung" src="img\on.png" alt="" width="37px">
+                  
+                    <img id="dung" src="img\on.png" alt="" width="30Fpx">
                  </div>
-                 <div class="controldenbao">
-                    <p>Đèn Báo Khẩn Cấp <span id="chay"></span></p>
-                    <img id="dungs" src="img\on.png" alt="" width="37px">
+                 <div class="controldenbaooff">
+                    <p>Emergency</p>
+                    <img id="dungs" src="hinh/alram-removebg-preview.png "alt="" width="50px">
+                 </div>
+                 <div class="controldenbaoon">
+                    <p>Emergency <span id="chay"></span></p>
+                    <img id="chay" src="hinh\nbo-ezgif.com-crop.gif"alt="" width="37px">
                  </div>
                  <div class="controlmode">
                     <div class="time">
                         <label>Time:</label>
                         <span id="current_time"></span>
                     </div>
-                    <h1 class="headermode">Exhaust Motor</h1>
+                    <h1 class="headermode">Exhaust Fan</h1>
                     <h2 class="headermode_bms">Control Mode</h2>
                     <div class="btncontrols">
                         <div class="btncontrol">
@@ -194,7 +146,7 @@
                     </div>
                 </div>
                 
-                <div class="timeset">
+                <!-- <div class="timeset">
                     <div class="switch-container">
                         <label class="switch">
                             <input type="checkbox" id="onOffSwitch">
@@ -202,15 +154,38 @@
                         </label>
                     </div>
                     <div class="timeInput">
-                        <label for="timeInput">Thời Gian Tắt:</label>
+                        <label for="timeInput">Time Off:</label>
                         <input type="time" id="timeInput">
                     </div>
                     <div class="timeInput">
-                        <label for="resetTimeInput">Thời Gian Bật:</label>
+                        <label for="resetTimeInput">Time On:</label>
                         <input type="time" id="resetTimeInput">
                     </div>
-                </div>
+                </div> -->
+                <div class="container">
+                    <h2>Enter Data</h2>
+                    <form id="dataForm">
+                        <label for="isTimer">isTimer:</label>
+                        <select id="isTimer" name="isTimer">
+                            <option value="0">OFF</option>
+                            <option value="1">ON</option>
+                        </select>
             
+                        <label for="option">Option:</label>
+                        <select id="option" name="option">
+                            <option value="0">OFF</option>
+                            <option value="1">ON</option>
+                        </select>
+            
+                        <label for="timeStart">Time Start:</label>
+                        <input type="time" id="timeStart" name="timeStart">
+            
+                        <label for="timeEnd">Time End:</label>
+                        <input type="time" id="timeEnd" name="timeEnd">
+            
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
                 <!---------------------------------------------------- chức năng fan -------------------------------------------------------- -->                
                 <div class="fan">
                     <button class="open_fan"><img  src="hinh/moto2-removebg-preview.png" alt="" width="135" height="135"></button>   
@@ -341,37 +316,28 @@
                                                 <option value="40">
                                             </datalist>
                                         </p>
-                                        <!-- <p>
-                                            <label for="Set_pointD02">Set Point Co:</label>
-                                            <input type="number" list="topic4" id="Set_pointD02">
-                                            <datalist id="topic4">
-                                                <option value="50">
-                                                <option value="100">
-                                                <option value="500">
-                                            </datalist>
-                                        </p> -->
                                         
                                     </div>
                                     <div class="block">
                                         <p>
                                             <label >P:</label>
-                                            <input type="number" id="P">
+                                            <input type="number" list="topic4" id="P">
                                             <datalist id="topic4">
-                                                <option value="227">
+                                                <option value="3">
                                             </datalist>
                                         </p>
                                         <p>
                                             <label >I:</label>
                                             <input type="number"list="topic5" id="I">
                                             <datalist id="topic5">
-                                                <option value="244">
+                                                <option value="2">
                                             </datalist>
                                         </p>
                                         <p>
                                             <label >D:</label>
                                             <input type="number"list="topic6" id="D">
                                             <datalist id="topic6">
-                                                <option value="43">
+                                                <option value="2">
                                             </datalist>
                                         </p>
                                     </div>
@@ -385,7 +351,7 @@
                                 <img class="check" src="hinh/5610944.png" alt="">
                                 <span> Ghi dữ liệu thành công</span>
                             </div> -->
-                            <button>Lưu</button>
+                            <button>Save</button>
                         </div>
                     </div>
                 </div>
@@ -398,11 +364,16 @@
             <div class="alert1">
                 <div class="process"></div>
                 <img class="check" src="hinh/5610944.png" alt="">
+                <img class="green-icon" src="hinh/green.png" alt="Green" style="display: none;">
+                <img class="red-icon" src="hinh/red.png" alt="Red" style="display: none;">
                 <span> Trang thai dong co </span>
             </div>
+            
             <div class="alert2">
                 <div class="process"></div>
-                <img class="check" src="hinh/5610944.png" alt="">
+                <!-- <img class="check" src="hinh/5610944.png" alt=""> -->
+                <img class="lock-icon" src="hinh/Lock_icon.png" alt="Lock" style="display: none;">
+                <img class="unlock-icon" src="hinh/891386.png" alt="Unlock" style="display: none;">
                 <span> Trang thai dieu khien </span>
             </div>
             <div class="alert3">

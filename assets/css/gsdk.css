@@ -1291,7 +1291,7 @@ input[type="time"] {
 } */
 
 .container {
-    background-color: #fff;
+    background-color: #074c95;
     position: absolute; /* Hoặc position: fixed; */
     top: 200px; /* Khoảng cách từ đỉnh */
     left: 1200px; /* Khoảng cách từ bên trái */
@@ -1305,9 +1305,9 @@ input[type="time"] {
     justify-content: space-between;
 }
 
-h2 {
-    margin-bottom: 10px;
-    color: #333;
+.container h2 {
+    margin-bottom: 5px;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -1318,9 +1318,11 @@ form {
     justify-content: space-around;
 }
 
-label {
+.container label {
     margin-bottom: 5px;
-    color: #555;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* input, select {

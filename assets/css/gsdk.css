@@ -1295,9 +1295,9 @@ input[type="time"] {
     position: absolute; /* Hoặc position: fixed; */
     top: 200px; /* Khoảng cách từ đỉnh */
     left: 1250px; /* Khoảng cách từ bên trái */
-    width: 200px; /* Chiều rộng */
-    height: 410px; /* Chiều cao */
-    padding: 20px;
+    width: 170px; /* Chiều rộng */
+    height: 300px; /* Chiều cao */
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;

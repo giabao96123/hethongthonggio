@@ -1293,7 +1293,7 @@ input[type="time"] {
 .container1 {
     background-color: #074c95;
     position: absolute; /* Hoặc position: fixed; */
-    top: 200px; /* Khoảng cách từ đỉnh */
+    top: 300px; /* Khoảng cách từ đỉnh */
     left: 1250px; /* Khoảng cách từ bên trái */
     width: 170px; /* Chiều rộng */
     height: 300px; /* Chiều cao */

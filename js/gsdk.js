@@ -136,7 +136,7 @@ database.ref("Monitor system/Room Temp/data").on("value", function(snapshot) {
     if (TempSupply > 45) {
         // Hiển thị alert nếu nhiệt độ vượt quá 45°C
         tempAlert.style.display = 'block';
-        document.getElementById("tempAlertMessage").textContent = 'Cảnh báo: Nhiệt độ vượt mức an toànheat!';
+        document.getElementById("tempAlertMessage").textContent = 'Cảnh báo: Nhiệt độ vượt mức an toàn!';
     } else {
         // Ẩn alert nếu nhiệt độ dưới 45°C
         tempAlert.style.display = 'none';

@@ -480,6 +480,7 @@ body{
 
 .temp-alert {
     position: absolute;
+    width: 395px;
     top: 210px; /* Điều chỉnh vị trí theo nhu cầu */
     right: 20px;
     padding: 15px;

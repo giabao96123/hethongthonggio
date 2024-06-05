@@ -136,7 +136,7 @@ database.ref("Monitor system/Room Temp/data").on("value", function(snapshot) {
     if (TempSupply > 45) {
         // Hiển thị alert nếu nhiệt độ vượt quá 45°C
         tempAlert.style.display = 'block';
-        document.getElementById("tempAlertMessage").textContent = 'Cảnh báo: Nhiệt độ vượt mức an toàn!';
+        document.getElementById("tempAlertMessage").textContent = 'Cảnh báo: Nhiệt độ hầm vượt mức an toàn!';
     } else {
         // Ẩn alert nếu nhiệt độ dưới 45°C
         tempAlert.style.display = 'none';
@@ -247,151 +247,151 @@ setInterval(()=>{
   var d = new Date();
   time.innerHTML = d.toLocaleTimeString();
 },1000)
-var selectedTime;
-        var resetTime;
-        var timer;
-        var resetTimer;
-        var isTimerOn = false;
+// var selectedTime;
+//         var resetTime;
+//         var timer;
+//         var resetTimer;
+//         var isTimerOn = false;
 
-        function handleChange() {
-            var input = document.getElementById("RCM");
-            var selectedValue = parseInt(input.value);
-            console.log("Selected value:", selectedValue);
+//         function handleChange() {
+//             var input = document.getElementById("RCM");
+//             var selectedValue = parseInt(input.value);
+//             console.log("Selected value:", selectedValue);
             
-            if (selectedValue === 2 || selectedValue === 4) {
-                selectedTime = document.getElementById("timeInput").value;
-                console.log("Selected time:", selectedTime);
-                if (isTimerOn) {
-                    clearTimeout(timer);
-                    timer = setTimeout(function() {
-                        input.value = 1;
-                        console.log("Changing value to 1");
-                        saveValue(input.value);
-                    }, calculateMilliseconds(selectedTime));
-                }
-                localStorage.setItem('selectedTime', selectedTime);
-            }
-        }
+//             if (selectedValue === 2 || selectedValue === 4) {
+//                 selectedTime = document.getElementById("timeInput").value;
+//                 console.log("Selected time:", selectedTime);
+//                 if (isTimerOn) {
+//                     clearTimeout(timer);
+//                     timer = setTimeout(function() {
+//                         input.value = 1;
+//                         console.log("Changing value to 1");
+//                         saveValue(input.value);
+//                     }, calculateMilliseconds(selectedTime));
+//                 }
+//                 localStorage.setItem('selectedTime', selectedTime);
+//             }
+//         }
 
-        function handleTimeChange() {
-            selectedTime = document.getElementById("timeInput").value;
-            console.log("Time changed to:", selectedTime);
-            handleChange();
-        }
+//         function handleTimeChange() {
+//             selectedTime = document.getElementById("timeInput").value;
+//             console.log("Time changed to:", selectedTime);
+//             handleChange();
+//         }
 
-        function handleResetTimeChange() {
-            resetTime = document.getElementById("resetTimeInput").value;
-            console.log("Reset time changed to:", resetTime);
-            handleResetChange();
-        }
+//         function handleResetTimeChange() {
+//             resetTime = document.getElementById("resetTimeInput").value;
+//             console.log("Reset time changed to:", resetTime);
+//             handleResetChange();
+//         }
 
-        function handleResetChange() {
-            var input = document.getElementById("RCM");
-            if (resetTime && isTimerOn) {
-                clearTimeout(resetTimer);
-                resetTimer = setTimeout(function() {
-                    input.value = 2;
-                    console.log("Resetting value to 2");
-                    saveValue(input.value);
-                }, calculateMilliseconds(resetTime));
-                localStorage.setItem('resetTime', resetTime);
-            }
-        }
+//         function handleResetChange() {
+//             var input = document.getElementById("RCM");
+//             if (resetTime && isTimerOn) {
+//                 clearTimeout(resetTimer);
+//                 resetTimer = setTimeout(function() {
+//                     input.value = 2;
+//                     console.log("Resetting value to 2");
+//                     saveValue(input.value);
+//                 }, calculateMilliseconds(resetTime));
+//                 localStorage.setItem('resetTime', resetTime);
+//             }
+//         }
 
-        function calculateMilliseconds(time) {
-            var selectedHours = parseInt(time.split(":")[0]);
-            var selectedMinutes = parseInt(time.split(":")[1]);
-            var now = new Date();
-            var targetTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), selectedHours, selectedMinutes);
-            var currentTime = now.getTime();
-            var targetTimeMilliseconds = targetTime.getTime();
-            if (targetTimeMilliseconds < currentTime) {
-                targetTime.setDate(targetTime.getDate() + 1);
-            }
-            var milliseconds = targetTime.getTime() - currentTime;
-            console.log("Milliseconds until change:", milliseconds);
-            return milliseconds;
-        }
+//         function calculateMilliseconds(time) {
+//             var selectedHours = parseInt(time.split(":")[0]);
+//             var selectedMinutes = parseInt(time.split(":")[1]);
+//             var now = new Date();
+//             var targetTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), selectedHours, selectedMinutes);
+//             var currentTime = now.getTime();
+//             var targetTimeMilliseconds = targetTime.getTime();
+//             if (targetTimeMilliseconds < currentTime) {
+//                 targetTime.setDate(targetTime.getDate() + 1);
+//             }
+//             var milliseconds = targetTime.getTime() - currentTime;
+//             console.log("Milliseconds until change:", milliseconds);
+//             return milliseconds;
+//         }
 
-        function saveValue(value) {
-            console.log("Saving value to database:", value);
-            // Thực hiện các thao tác lưu giá trị vào cơ sở dữ liệu Firebase
-            database.ref("Control system").update({
-                "Virtual run command/data": value
-            });
-        }
+//         function saveValue(value) {
+//             console.log("Saving value to database:", value);
+//             // Thực hiện các thao tác lưu giá trị vào cơ sở dữ liệu Firebase
+//             database.ref("Control system").update({
+//                 "Virtual run command/data": value
+//             });
+//         }
 
-        function toggleTimer() {
-            var onOffSwitch = document.getElementById("onOffSwitch");
-            isTimerOn = onOffSwitch.checked;
-            console.log("Timer is " + (isTimerOn ? "on" : "off"));
+//         function toggleTimer() {
+//             var onOffSwitch = document.getElementById("onOffSwitch");
+//             isTimerOn = onOffSwitch.checked;
+//             console.log("Timer is " + (isTimerOn ? "on" : "off"));
 
-            if (isTimerOn) {
-                handleChange(); // Start the timer if it's turned on
-                handleResetChange(); // Start the reset timer if it's turned on
-            } else {
-                clearTimeout(timer); // Stop the timer if it's turned off
-                clearTimeout(resetTimer); // Stop the reset timer if it's turned off
-            }
-        }
+//             if (isTimerOn) {
+//                 handleChange(); // Start the timer if it's turned on
+//                 handleResetChange(); // Start the reset timer if it's turned on
+//             } else {
+//                 clearTimeout(timer); // Stop the timer if it's turned off
+//                 clearTimeout(resetTimer); // Stop the reset timer if it's turned off
+//             }
+//         }
 
-        window.onload = function() {
-            var input = document.getElementById("RCM");
-            input.addEventListener("change", handleChange);
+//         window.onload = function() {
+//             var input = document.getElementById("RCM");
+//             input.addEventListener("change", handleChange);
 
-            var saveButton = document.getElementById("write");
-            saveButton.addEventListener("click", function() {
-                var input = document.getElementById("RCM");
-                var selectedValue = parseInt(input.value);
-                console.log("Lưu giá trị:", selectedValue);
-                saveValue(selectedValue);
-            });
+//             var saveButton = document.getElementById("write");
+//             saveButton.addEventListener("click", function() {
+//                 var input = document.getElementById("RCM");
+//                 var selectedValue = parseInt(input.value);
+//                 console.log("Lưu giá trị:", selectedValue);
+//                 saveValue(selectedValue);
+//             });
 
-            var timeInput = document.getElementById("timeInput");
-            timeInput.addEventListener("change", handleTimeChange);
+//             var timeInput = document.getElementById("timeInput");
+//             timeInput.addEventListener("change", handleTimeChange);
 
-            var resetTimeInput = document.getElementById("resetTimeInput");
-            resetTimeInput.addEventListener("change", handleResetTimeChange);
+//             var resetTimeInput = document.getElementById("resetTimeInput");
+//             resetTimeInput.addEventListener("change", handleResetTimeChange);
 
-            var onOffSwitch = document.getElementById("onOffSwitch");
-            onOffSwitch.addEventListener("change", toggleTimer);
+//             var onOffSwitch = document.getElementById("onOffSwitch");
+//             onOffSwitch.addEventListener("change", toggleTimer);
 
-            // Load saved times from localStorage and set the timers
-            var savedSelectedTime = localStorage.getItem('selectedTime');
-            var savedResetTime = localStorage.getItem('resetTime');
-            if (savedSelectedTime) {
-                document.getElementById("timeInput").value = savedSelectedTime;
-                selectedTime = savedSelectedTime;
-            }
-            if (savedResetTime) {
-                document.getElementById("resetTimeInput").value = savedResetTime;
-                resetTime = savedResetTime;
-            }
-            if (isTimerOn) {
-                handleChange();
-                handleResetChange();
-            }
-        };
-        function toggleTimer() {
-            var onOffSwitch = document.getElementById("onOffSwitch");
-            isTimerOn = onOffSwitch.checked;
-            console.log("Timer is " + (isTimerOn ? "on" : "off"));
+//             // Load saved times from localStorage and set the timers
+//             var savedSelectedTime = localStorage.getItem('selectedTime');
+//             var savedResetTime = localStorage.getItem('resetTime');
+//             if (savedSelectedTime) {
+//                 document.getElementById("timeInput").value = savedSelectedTime;
+//                 selectedTime = savedSelectedTime;
+//             }
+//             if (savedResetTime) {
+//                 document.getElementById("resetTimeInput").value = savedResetTime;
+//                 resetTime = savedResetTime;
+//             }
+//             if (isTimerOn) {
+//                 handleChange();
+//                 handleResetChange();
+//             }
+//         };
+//         function toggleTimer() {
+//             var onOffSwitch = document.getElementById("onOffSwitch");
+//             isTimerOn = onOffSwitch.checked;
+//             console.log("Timer is " + (isTimerOn ? "on" : "off"));
         
-            if (isTimerOn) {
-                handleChange(); // Start the timer if it's turned on
-                handleResetChange(); // Start the reset timer if it's turned on
-            } else {
-                clearTimeout(timer); // Stop the timer if it's turned off
-                clearTimeout(resetTimer); // Stop the reset timer if it's turned off
-            }
+//             if (isTimerOn) {
+//                 handleChange(); // Start the timer if it's turned on
+//                 handleResetChange(); // Start the reset timer if it's turned on
+//             } else {
+//                 clearTimeout(timer); // Stop the timer if it's turned off
+//                 clearTimeout(resetTimer); // Stop the reset timer if it's turned off
+//             }
         
-            // Nếu đang ở trạng thái 1 và chuyển sang trạng thái 2, sau đó chuyển lại trạng thái 1
-            if (!isTimerOn && document.getElementById("RCM").value === "1") {
-                document.getElementById("RCM").value = "2";
-                console.log("Changing value to 2");
-                saveValue(2);
-            }
-}
+//             // Nếu đang ở trạng thái 1 và chuyển sang trạng thái 2, sau đó chuyển lại trạng thái 1
+//             if (!isTimerOn && document.getElementById("RCM").value === "1") {
+//                 document.getElementById("RCM").value = "2";
+//                 console.log("Changing value to 2");
+//                 saveValue(2);
+//             }
+// }
 var selectedTime;
 var resetTime;
 var timer;

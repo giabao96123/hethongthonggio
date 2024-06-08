@@ -66,8 +66,8 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    margin-left: 318px;
-    margin-right: 318px;
+    margin-left: 180px;
+    margin-right: 180px;
     border-radius: 15px;
     border: 4px solid #073f7e;
 }
@@ -108,7 +108,7 @@ body{
     /* font-weight: bold; */
     position: absolute;
     top: 292px;
-    left: 742px
+    left: 752px
     
 }
 
@@ -194,6 +194,8 @@ body{
     line-height: 1; /* Đặt line-height thành 1 để loại bỏ khoảng cách giữa các hàng */
     padding: 5px 0; /* Đảm bảo khoảng cách trên và dưới là 5px */
     margin: 0; /* Đảm bảo không có khoảng cách thêm bên ngoài phần tử */
+    z-index: 2;
+    cursor: pointer;
 }
 
 .temperature-container {
@@ -299,6 +301,8 @@ body{
     position: absolute;
     top: 605px;
     left: 945px;
+    cursor: pointer;
+    z-index: 2;
     padding: 5px 0; /* Đảm bảo khoảng cách trên và dưới là 5px */
     margin: 0; /* Đảm bảo không có khoảng cách thêm bên ngoài phần tử */
 }
@@ -465,6 +469,7 @@ body{
     position: absolute;
     top: 520px;
     left: 405px;
+    z-index: 2;
 }
 .nhiet-text {
     display: block; /* Đảm bảo chữ "ON" và "OFF" nằm ngay dưới chữ "Co gas arlam" */
@@ -531,7 +536,7 @@ body{
     background: #074c95;
     position: absolute;
     top: 200px;
-    left: 50px;
+    left: 40px;
     font-size: 20px;
     border-radius: 10px;
     padding: 5px; /* Đảm bảo khoảng cách giữa viền và nội dung bên trong */
@@ -699,7 +704,7 @@ input[type="time"] {
 }
 
 .modal_fan{
-    z-index: 2;
+    z-index: 3;
     background: rgba(0, 0, 0, 0.6);
     border: 2px solid #074c95;
     /* border-radius: 10px; */
@@ -716,7 +721,7 @@ input[type="time"] {
 }
 /* bangdieukien */
 .modal_inner_fan{  
-    width: 910px;
+    width: 925px;
     height: 693px;
     background: white;
     /* border-radius: 10px; */
@@ -922,6 +927,10 @@ input[type="time"] {
     font-size: 20px;
     padding-top: 5px;
 }
+.value-para-monitor1{
+    font-size: 20px;
+    padding-top: 0px;
+}
 
 /* Dien ap */
 #giamsatdienap{
@@ -1107,14 +1116,14 @@ input[type="time"] {
     width: 400px;
 }
 /* ---------congsuat------------- */
-.content-row-power{
+.content-row-airflow{
     padding: 5px 10px;
     font-size: 15px;
     width: 400px;
     text-align: center;
     
 }
-#giamsatcongsuat{
+#giamsatluuluong{
     background-color: white;
     opacity: 0;
     margin-top: 10px;
@@ -1124,14 +1133,14 @@ input[type="time"] {
     border-radius: 9px;
     border: 4px solid #073f7e;
 }
-#power-monitor{
+#airflow-monitor{
     padding-top: 20px;
     
 }
-#table-sheet-power{
+#table-sheet-airflow{
     background: #989a9b;
 }
-#sheet-power{
+#sheet-airflow{
     margin-left: 20px;
     width: 400px
 }
@@ -1361,4 +1370,63 @@ button:hover {
     min-width: 120px;
     height: 30px;
 
+}
+/* nhietdo */
+.content-row-temperature{
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 400px;
+    text-align: center;
+    
+}
+#giamsatnhietdo{
+    background-color: white;
+    opacity: 0;
+    margin-top: 10px;
+    height: 540px;
+    margin-left: 70px;
+    margin-right: 70px;
+    border-radius: 9px;
+    border: 4px solid #073f7e;
+}
+#temperature-monitor{
+    padding-top: 20px;
+    
+}
+#table-sheet-temperature{
+    background: #989a9b;
+}
+#sheet-temperature{
+    margin-left: 20px;
+    width: 400px;
+}
+
+/* nhietdo */
+.content-row-CO{
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 400px;
+    text-align: center;
+    
+}
+#giamsatCO{
+    background-color: white;
+    opacity: 0;
+    margin-top: 10px;
+    height: 540px;
+    margin-left: 70px;
+    margin-right: 70px;
+    border-radius: 9px;
+    border: 4px solid #073f7e;
+}
+#CO-monitor{
+    padding-top: 20px;
+    
+}
+#table-sheet-CO{
+    background: #989a9b;
+}
+#sheet-CO{
+    margin-left: 20px;
+    width: 400px;
 }

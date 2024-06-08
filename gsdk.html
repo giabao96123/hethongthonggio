@@ -48,13 +48,13 @@
                 <img src="img/logo_HCMUTE-removebg-preview.png" alt="" width="87" height="95" >
                 <div class="text">
                     <h1 class="title">ĐỒ ÁN TỐT NGHIỆP</h1>
-                    <h2 class="title">Ứng dụng BMS điều khiển và giám sát hệ thống thông gió tầng hầm </h2>
-                    <h3 class="title">Cảnh báo khí Co và nhiệt độ </h3>
+                    <h2 class="title">Ứng dụng BMS điều khiển và giám sát hệ thống thông gió tầng hầm cảnh báo khí Co và nhiệt độ</h2>
+                    <h3 class="title">GVHD:Lê Trọng Nghĩa         SVTH:Tạ Gia Bảo-Lương Thế Vinh</h3>
                 </div>
                 <img src="img/logo_FEEE-removebg-preview.png" alt=""width="100" height="95">
             </div>
             <div id="mohinh">
-                <div class="gsnds">
+                <div class="gsnds" onclick="function_temprature()">
                     <h2>Basement temperature:</h2>
                     <div class="temperature-container">
                         <span id="nhietdosupply" class="temperature-value"></span><span class="temperature-unit">°C</span>
@@ -69,7 +69,7 @@
                 <!-- <div class="gsndr">
                     <h2 ><span id="nhietdoreturn"></span> °C </h2>
                 </div> -->
-                <div class="gsass">
+                <div class="gsass"onclick="function_CO()">
                     <h2>CO gas concentration:</h2>
                     <div class="concentration-container">
                         <span id="apsuatsupply" class="concentration-value"></span><span class="concentration-unit">ppm</span>
@@ -222,10 +222,10 @@
                                         <img class="icon-para-monitor" src="hinh/speed.png" alt="">
                                         <div id="value-speed-monitor" class="value-para-monitor"></div>
                                     </li>
-                                    <li class="para-monitor" onclick="function_power()">
-                                        <p class="title-para-monitor">Công suất</p>
-                                        <img class="icon-para-monitor" src="hinh/powerelectric-removebg-preview.png" alt="">
-                                        <div id="value-power-monitor" class="value-para-monitor"></div>
+                                    <li class="para-monitor" onclick="function_airflow()">
+                                        <p class="title-para-monitor">Lưu lượng </p>
+                                        <img class="icon-para-monitorll" src="hinh/airflow.png" alt="" width="37px">
+                                        <div id="value-airflow-monitor" class="value-para-monitor1"></div>
                                     </li>
                                     <li class="para-monitor" >
                                         <p class="title-para-monitor">Trạng Thái</p>
@@ -594,63 +594,166 @@
                 </div>              
             </div>
             <!-- congsuat -->
-             <div>
-                <div>
-                    <div id="giamsatcongsuat">
-                        <div id="sheet-power" class="sheet" >
-                            <p class="report" onclick="open_sheet()">Report</p>
-                            <table id="table-sheet-power" class="table-sheet">
-                                <div class="body-sheet">
-                                    <tr class="title-col-sheet">
-                                        <th class="content-row-power">Thời gian</th>
-                                        <th class="content-row-power">Công Suất</th>
-                                    </tr>
-                                    <tr class="title-col-sheet">
-                                        <td class="content-row-power"></td>
-                                        <td class="content-row-power"></td>
-                                    </tr>
-                                    <tr class="title-col-sheet">
-                                        <td class="content-row-power"></td>
-                                        <td class="content-row-power"></td>
-                                    </tr>
-                                    <tr class="title-col-sheet">
-                                        <td class="content-row-power"></td>
-                                        <td class="content-row-power"></td>
-                                    </tr>
-                                    <tr class="title-col-sheet">
-                                        <td class="content-row-power"></td>
-                                        <td class="content-row-power"></td>
-                                    </tr>
-                                    <tr class="title-col-sheet">
-                                        <td class="content-row-power"></td>
-                                        <td class="content-row-power"></td>
-                                    </tr>
-                                    <tr class="title-col-sheet">
-                                        <td class="content-row-power"></td>
-                                        <td class="content-row-power"></td>
-                                    </tr>
-                                    <tr class="title-col-sheet">
-                                        <td class="content-row-power"></td>
-                                        <td class="content-row-power"></td>
-                                    </tr>
-                                </div>
-                            </table>
-                        </div>
-                        <div id="frame-gauge-power" class="frame-gauge">
-                            <p id="frame-gauge-power-text" class="frame-gauge-text">Gauge Power</p>
-                            <canvas id="gauge-power" class="gauge"></canvas>
-                            <div id="power" class="value"></div>
-                        </div>
-                        <div id="power-monitor">
-                            <div id="frame-chart-power" class="frame-chart">
-                                <p id="frame-chart-power-text" class="frame-chart-text">Chart Power</p>
-                                <canvas id="chart-power" class="chart"></canvas>
+                <div id="giamsatluuluong">
+                    <div id="sheet-airflow" class="sheet">
+                        <p class="report" onclick="open_sheet()">Report</p>
+                        <table id="table-sheet-airflow" class="table-sheet">
+                            <div class="body-sheet">
+                                <tr class="title-col-sheet">
+                                    <th class="content-row-airflow">Thời gian</th>
+                                    <th class="content-row-airflow">Lưu lượng (m³/h)</th>
+                                </tr>
+                                <tr class="title-col-sheet">
+                                    <td class="content-row-airflow"></td>
+                                    <td class="content-row-airflow"></td>
+                                </tr>
+                                <tr class="title-col-sheet">
+                                    <td class="content-row-airflow"></td>
+                                    <td class="content-row-airflow"></td>
+                                </tr>
+                                <tr class="title-col-sheet">
+                                    <td class="content-row-airflow"></td>
+                                    <td class="content-row-airflow"></td>
+                                </tr>
+                                <tr class="title-col-sheet">
+                                    <td class="content-row-airflow"></td>
+                                    <td class="content-row-airflow"></td>
+                                </tr>
+                                <tr class="title-col-sheet">
+                                    <td class="content-row-airflow"></td>
+                                    <td class="content-row-airflow"></td>
+                                </tr>
+                                <tr class="title-col-sheet">
+                                    <td class="content-row-airflow"></td>
+                                    <td class="content-row-airflow"></td>
+                                </tr>
+                                <tr class="title-col-sheet">
+                                    <td class="content-row-airflow"></td>
+                                    <td class="content-row-airflow"></td>
+                                </tr>
                             </div>
-                        </div>              
+                        </table>
+                    </div>
+                    <div id="frame-gauge-airflow" class="frame-gauge">
+                        <p id="frame-gauge-airflow-text" class="frame-gauge-text">Gauge Airflow</p>
+                        <canvas id="gauge-airflow" class="gauge"></canvas>
+                        <div id="airflow" class="value"></div>
+                    </div>
+                    <div id="airflow-monitor">
+                        <div id="frame-chart-airflow" class="frame-chart">
+                            <p id="frame-chart-airflow-text" class="frame-chart-text">Chart Airflow</p>
+                            <canvas id="chart-airflow" class="chart"></canvas>
+                        </div>
                     </div>
                 </div>
-                
+<!-- nhietdo -->
+<div id="giamsatnhietdo">
+    <div id="sheet-temperature" class="sheet">
+        <p class="report" onclick="open_sheet()">Report</p>
+        <table id="table-sheet-temperature" class="table-sheet">
+            <div class="body-sheet">
+                <tr class="title-col-sheet">
+                    <th class="content-row-temperature">Thời gian</th>
+                    <th class="content-row-temperature">Nhiệt độ</th>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-temperature"></td>
+                    <td class="content-row-temperature"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-temperature"></td>
+                    <td class="content-row-temperature"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-temperature"></td>
+                    <td class="content-row-temperature"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-temperature"></td>
+                    <td class="content-row-temperature"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-temperature"></td>
+                    <td class="content-row-temperature"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-temperature"></td>
+                    <td class="content-row-temperature"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-temperature"></td>
+                    <td class="content-row-temperature"></td>
+                </tr>
             </div>
+        </table>
+    </div>
+    <div id="frame-gauge-temperature" class="frame-gauge">
+        <p id="frame-gauge-temperature-text" class="frame-gauge-text">Gauge Temperature</p>
+        <canvas id="gauge-temperature" class="gauge"></canvas>
+        <div id="temperature" class="value"></div>
+    </div>
+    <div id="temperature-monitor">
+        <div id="frame-chart-temperature" class="frame-chart">
+            <p id="frame-chart-temperature-text" class="frame-chart-text">Chart Temperature</p>
+            <canvas id="chart-temperature" class="chart"></canvas>
+        </div>
+    </div>              
+</div>
+
+<div id="giamsatCO">
+    <div id="sheet-CO" class="sheet">
+        <p class="report" onclick="open_sheet()">Report</p>
+        <table id="table-sheet-CO" class="table-sheet">
+            <div class="body-sheet">
+                <tr class="title-col-sheet">
+                    <th class="content-row-CO">Thời gian</th>
+                    <th class="content-row-CO">Nồng độ CO</th>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-CO"></td>
+                    <td class="content-row-CO"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-CO"></td>
+                    <td class="content-row-CO"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-CO"></td>
+                    <td class="content-row-CO"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-CO"></td>
+                    <td class="content-row-CO"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-CO"></td>
+                    <td class="content-row-CO"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-CO"></td>
+                    <td class="content-row-CO"></td>
+                </tr>
+                <tr class="title-col-sheet">
+                    <td class="content-row-CO"></td>
+                    <td class="content-row-CO"></td>
+                </tr>
+            </div>
+        </table>
+    </div>
+    <div id="frame-gauge-CO" class="frame-gauge">
+        <p id="frame-gauge-CO-text" class="frame-gauge-text">Gauge CO Concentration</p>
+        <canvas id="gauge-CO" class="gauge"></canvas>
+        <div id="CO" class="value"></div>
+    </div>
+    <div id="CO-monitor">
+        <div id="frame-chart-CO" class="frame-chart">
+            <p id="frame-chart-CO-text" class="frame-chart-text">Chart CO Concentration</p>
+            <canvas id="chart-CO" class="chart"></canvas>
+        </div>
+    </div>              
+</div>
+
+
         </div>
     </div>  
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>

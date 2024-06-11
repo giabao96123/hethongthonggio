@@ -262,11 +262,17 @@
                                         </p>
                                         <p>
                                             <label >Acc:</label>
-                                        <input type="number" id="ACC">
+                                        <input type="number" list="topic11"id="ACC">
+                                        <datalist id="topic11">
+                                            <option value="5">
+                                          </datalist>
                                         </p>
                                         <p>
                                             <label >Dec:</label>
-                                        <input type="number" id="DEC">
+                                        <input type="number" list="topic12"id="DEC">
+                                        <datalist id="topic12">
+                                            <option value="5">
+                                          </datalist>
                                         </p>
                                     </div>
                                     <div class="block align-datalist">
@@ -288,7 +294,7 @@
                                             </datalist>
                                         </p>
                                         <p>
-                                            <label >Set Point Co :</label>
+                                            <label >Set Point Co (Fan) :</label>
                                             <input type="number" id="Set_Point">
                                         </p>
                                     </div>
@@ -316,28 +322,36 @@
                                                 <option value="40">
                                             </datalist>
                                         </p>
-                                        
+                                        <p>
+                                            <label >Set Point Co :</label>
+                                            <input type="number"  list="topic10"id="Set_PointD02">
+                                            <datalist id="topic10">
+                                                <option value="20">
+                                                <option value="50">
+                                                <option value="100">
+                                            </datalist>
+                                        </p>
                                     </div>
                                     <div class="block">
                                         <p>
                                             <label >P:</label>
                                             <input type="number" list="topic4" id="P">
                                             <datalist id="topic4">
-                                                <option value="3">
+                                                <option value="227">
                                             </datalist>
                                         </p>
                                         <p>
                                             <label >I:</label>
                                             <input type="number"list="topic5" id="I">
                                             <datalist id="topic5">
-                                                <option value="2">
+                                                <option value="244">
                                             </datalist>
                                         </p>
                                         <p>
                                             <label >D:</label>
                                             <input type="number"list="topic6" id="D">
                                             <datalist id="topic6">
-                                                <option value="2">
+                                                <option value="43">
                                             </datalist>
                                         </p>
                                     </div>
@@ -601,7 +615,7 @@
                             <div class="body-sheet">
                                 <tr class="title-col-sheet">
                                     <th class="content-row-airflow">Thời gian</th>
-                                    <th class="content-row-airflow">Lưu lượng (m³/h)</th>
+                                    <th class="content-row-airflow">Lưu lượng (m³/min)</th>
                                 </tr>
                                 <tr class="title-col-sheet">
                                     <td class="content-row-airflow"></td>

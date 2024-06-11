@@ -126,19 +126,21 @@ database.ref("Monitor system/Output Power/data").on("value", function(snapshot){
     var Speed = snapshot.val();
     document.getElementById("value-power-monitor").innerHTML = Speed + " Kw";
 })
-// get Tempsupply from firebase (auto update when data change)
 database.ref("Monitor system/Room Temp/data").on("value", function(snapshot) {
     var TempSupply = snapshot.val();
     document.getElementById("nhietdosupply").innerHTML = TempSupply;
 
+    // Lấy giá trị set point từ ô nhập
+    var setPoint = parseInt(document.getElementById("Set_pointD01").value);
+
     // Kiểm tra nhiệt độ và hiển thị hoặc ẩn alert tùy chỉnh
     var tempAlert = document.getElementById("tempAlert");
-    if (TempSupply > 45) {
-        // Hiển thị alert nếu nhiệt độ vượt quá 45°C
+    if (TempSupply > setPoint) {
+        // Hiển thị alert nếu nhiệt độ vượt quá giá trị set point
         tempAlert.style.display = 'block';
         document.getElementById("tempAlertMessage").textContent = 'Cảnh báo: Nhiệt độ hầm vượt mức an toàn!';
     } else {
-        // Ẩn alert nếu nhiệt độ dưới 45°C
+        // Ẩn alert nếu nhiệt độ dưới giá trị set point
         tempAlert.style.display = 'none';
     }
 });
@@ -1045,6 +1047,7 @@ var chartIntervalvoltage, historyIntervalvoltage;
                 updateHistoryDatavoltage(Voltage);
             }, 1000);
         }
+        
 // -------DONGDIEN------/
 var opts_current = {
     angle: -0.2,
@@ -1514,8 +1517,8 @@ const base_airflow = 5.5; // Lưu lượng khí cơ sở
 database.ref("Monitor system/Output frequecy/data").on("value", function (snapshot) {
     var frequency_out = snapshot.val();
     airflow_out = base_airflow * (frequency_out / base_frequency);
-    document.getElementById("airflow").innerHTML = airflow_out.toFixed(2) + " m³/h";    
-    document.getElementById("value-airflow-monitor").innerHTML = "" + airflow_out.toFixed(2) + " m³/h";
+    document.getElementById("airflow").innerHTML = airflow_out.toFixed(2) + " m³/min";    
+    document.getElementById("value-airflow-monitor").innerHTML = "" + airflow_out.toFixed(2) + " m³/min";
 
     var target_airflow = document.getElementById('gauge-airflow'); // your canvas element
     var ctx = target_airflow.getContext('2d');
@@ -1553,7 +1556,7 @@ function updateHistoryDataairflow(airflow_out) {
 
     for (let i = 0; i < 7; i++) {
         content_row_airflow[i * 2 + 2].innerHTML = time_airflow[i];
-        content_row_airflow[i * 2 + 3].innerHTML = value_airflow[i].toFixed(2) + " m³/h";
+        content_row_airflow[i * 2 + 3].innerHTML = value_airflow[i].toFixed(2) + " m³/min";
     }
 }
 // Bắt đầu cập nhật biểu đồ mỗi giây nếu chưa có

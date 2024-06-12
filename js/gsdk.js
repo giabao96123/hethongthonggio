@@ -134,13 +134,17 @@ database.ref("Monitor system/Room Temp/data").on("value", function(snapshot) {
     var setPoint = parseInt(document.getElementById("Set_pointD01").value);
 
     // Kiểm tra nhiệt độ và hiển thị hoặc ẩn alert tùy chỉnh
+    var locSound = document.getElementById("loc_sound");
     var tempAlert = document.getElementById("tempAlert");
     if (TempSupply > setPoint) {
         // Hiển thị alert nếu nhiệt độ vượt quá giá trị set point
+        locSound.play();
         tempAlert.style.display = 'block';
         document.getElementById("tempAlertMessage").textContent = 'Cảnh báo: Nhiệt độ hầm vượt mức an toàn!';
     } else {
         // Ẩn alert nếu nhiệt độ dưới giá trị set point
+        locSound.pause();
+        locSound.currentTime = 0;
         tempAlert.style.display = 'none';
     }
 });
@@ -150,16 +154,21 @@ database.ref("Monitor system/Room Temp/data").on("value", function(snapshot) {
 
 database.ref("Monitor system/Co concentration/data").on("value", function(snapshot) {
     var PresSupply = snapshot.val();
+
     document.getElementById("apsuatsupply").innerHTML = PresSupply;
 
     // Kiểm tra nồng độ CO và hiển thị hoặc ẩn alert tùy chỉnh
     var coAlert = document.getElementById("coAlert");
+    var locSound = document.getElementById("loc_sound1");
     if (PresSupply > 20) {
         // Hiển thị alert nếu nồng độ CO vượt quá 50ppm
         coAlert.style.display = 'block';
+        locSound.play();
         document.getElementById("coAlertMessage").textContent = 'Cảnh báo: Nồng độ CO vượt mức cho phép!';
     } else {
         // Ẩn alert nếu nồng độ CO dưới 50ppm
+        locSound.pause();
+        locSound.currentTime = 0;
         coAlert.style.display = 'none';
     }
 });
@@ -895,15 +904,10 @@ function getArr(arr, newVal) {
     if (arr.length === 0 && !newVal) return [];
     
     const newArr = [...arr, newVal];
-    if (newArr.length > 15) {
+    if (newArr.length > 360) {
         newArr.shift();
     }
     return newArr;
-}
-function open_sheet() {
-    var url = "https://docs.google.com/spreadsheets/d/1H8tVvgnyaNv76P0YG9u-haIhxGH3SJoNudgQifCyels/edit#gid=0";
-    var target = "_blank";
-    window.open(url, target);   
 }
 var opts_voltage = {
     angle: -0.2,
@@ -933,7 +937,8 @@ var chart_voltage = new Chart(voltagee, {
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 3,
-            fill: false
+            fill: false,
+            pointRadius: 0
         }]
     },
     options: {
@@ -1077,7 +1082,8 @@ var chart_current = new Chart(current, {
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 3,
-            fill: false
+            fill: false,
+            pointRadius: 0
         }]
     },
     options: {
@@ -1221,7 +1227,8 @@ var opts_frequency = {
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3,
-                fill: false
+                fill: false,
+                pointRadius: 0
             }]
         },
         options: {
@@ -1364,7 +1371,8 @@ var chart_speed = new Chart(speed, {
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 3,
-            fill: false
+            fill: false,
+            pointRadius: 0
         }]
     },
     options: {
@@ -1484,7 +1492,8 @@ var chart_airflow = new Chart(airflow, {
             backgroundColor: 'rgba(99, 132, 255, 0.5)',
             borderColor: 'rgba(99, 132, 255, 1)',
             borderWidth: 3,
-            fill: false
+            fill: false,
+            pointRadius: 0
         }]
     },
     options: {
@@ -1495,7 +1504,7 @@ var chart_airflow = new Chart(airflow, {
         scales: {
             y: {
                 min: 0,
-                max: 10,
+                max: 6,
                 ticks: {
                     stepSize: 0.5
                 }
@@ -1606,7 +1615,8 @@ var chart_temperature = new Chart(temperature, {
             backgroundColor: 'rgba(99, 132, 255, 0.5)',
             borderColor: 'rgba(99, 132, 255, 1)',
             borderWidth: 3,
-            fill: false
+            fill: false,
+            pointRadius: 0
         }]
     },
     options: {
@@ -1653,6 +1663,14 @@ database.ref("Monitor system/Room Temp/data").on("value", function (snapshot) {
     updateHistoryDataTemperature(temperature_out);
 });
 
+function getArr(arr, val) {
+    arr.push(val);
+    if (arr.length > 360) {
+        arr.shift();
+    }
+    return arr;
+}
+
 function updateChartTemperature(temperature_out) {
     var time = new Date().toLocaleTimeString();
     const data = getArr(chart_temperature.data.datasets[0].data, temperature_out);
@@ -1697,6 +1715,198 @@ if (!historyIntervalTemperature) {
     }, 1000);
 }
 
+function exportTemperatureToExcel() {
+    // Prepare chart data
+    const chartData = chart_temperature.data.datasets[0].data;
+    const chartLabels = chart_temperature.data.labels;
+
+    // Prepare historical temperature data
+    const historyData = [];
+    for (let i = 0; i < time_temperature.length; i++) {
+        if (time_temperature[i] && value_temperature[i] !== undefined) {
+            historyData.push([time_temperature[i], value_temperature[i]]);
+        }
+    }
+
+    // Create a new workbook and worksheets
+    const workbook = XLSX.utils.book_new();
+
+    // Chart Data Worksheet
+    const chartDataWorksheet = XLSX.utils.aoa_to_sheet([
+        ['Time', 'Temperature'],
+        ...chartLabels.map((label, index) => [label, chartData[index]])
+    ]);
+    XLSX.utils.book_append_sheet(workbook, chartDataWorksheet, 'Chart Data');
+
+    // Historical Data Worksheet
+    const historyDataWorksheet = XLSX.utils.aoa_to_sheet([
+        ['Time', 'Temperature'],
+        ...historyData
+    ]);
+    XLSX.utils.book_append_sheet(workbook, historyDataWorksheet, 'Historical Data');
+
+    // Save the workbook
+    XLSX.writeFile(workbook, 'TemperatureData.xlsx');
+}
+
+
+// var opts_CO = {
+//     angle: -0.2,
+//     lineWidth: 0.2,
+//     radiusScale: 1,
+//     pointer: {
+//         length: 0.6,
+//         strokeWidth: 0.04,
+//         color: '#000000'
+//     },
+//     renderTicks: false,
+//     limitMax: false,
+//     limitMin: false,
+//     percentColors: [[0.0, "#a9d70b"], [0.50, "#f9c802"], [1.0, "#ff0000"]],
+//     strokeColor: '#E0E0E0',
+//     generateGradient: true
+// };
+
+// var CO = document.getElementById('chart-CO').getContext('2d');
+// var chart_CO = new Chart(CO, {
+//     type: 'line',
+//     data: {
+//         labels: [],
+//         datasets: [{
+//             label: 'CO Concentration',
+//             data: [],
+//             backgroundColor: 'rgba(255, 99, 132, 0.5)',
+//             borderColor: 'rgba(255, 99, 132, 1)',
+//             borderWidth: 3,
+//             fill: false
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         animation: {
+//             duration: 0
+//         },
+//         scales: {
+//             y: {
+//                 min: 0,
+//                 max: 100,
+//                 ticks: {
+//                     stepSize: 10
+//                 }
+//             }
+//         }
+//     }
+// });
+
+// var content_row_CO = document.querySelectorAll(".content-row-CO");
+// var time_CO = [];
+// var value_CO = [];
+// var j = 0;
+// var CO_out = 0;
+// var chartIntervalCO, historyIntervalCO;
+
+// database.ref("Monitor system/Co concentration/data").on("value", function (snapshot) {
+//     //----------------------------- Gauge ----------------------------
+//     CO_out = snapshot.val();
+//     document.getElementById("CO").innerHTML = CO_out + " ppm";    
+    
+//     var target_CO = document.getElementById('gauge-CO'); // your canvas element
+//     var ctx = target_CO.getContext('2d');
+//     var gauge_CO = new Gauge(target_CO).setOptions(opts_CO); // create sexy gauge!
+//     gauge_CO.animationSpeed = 32;
+
+//     gauge_CO.maxValue = 100; // set max gauge value
+//     gauge_CO.set(CO_out);
+//     //----------------------------- Chart ----------------------------
+//     // Cập nhật biểu đồ ngay lập tức khi có dữ liệu mới
+//     updateChartCO(CO_out);
+//     //----------------------------- Table ----------------------------
+//     // Cập nhật dữ liệu lịch sử ngay lập tức khi có dữ liệu mới
+//     updateHistoryDataCO(CO_out);
+// });
+
+// function updateChartCO(CO_out) {
+//     var time = new Date().toLocaleTimeString();
+//     const data = getArr(chart_CO.data.datasets[0].data, CO_out);
+//     const labels = getArr(chart_CO.data.labels, time);
+//     chart_CO.data.labels = labels;
+//     chart_CO.data.datasets[0].data = data;
+//     chart_CO.update();
+// }
+
+// function updateHistoryDataCO(CO_out) {
+//     var time_now = new Date();
+//     if (j <= 6) {
+//         time_CO[j] = time_now.getHours() + ":" + time_now.getMinutes() + ":" + time_now.getSeconds();
+//         value_CO[j] = CO_out;
+//         j++;
+//     } else {
+//         for (let i = 0; i < 6; i++) {
+//             time_CO[i] = time_CO[i + 1];
+//             value_CO[i] = value_CO[i + 1];
+//         }
+//         time_CO[6] = time_now.getHours() + ":" + time_now.getMinutes() + ":" + time_now.getSeconds();
+//         value_CO[6] = CO_out;
+//     }
+
+//     for (let i = 0; i < 7; i++) {
+//         content_row_CO[i * 2 + 2].innerHTML = time_CO[i];
+//         content_row_CO[i * 2 + 3].innerHTML = value_CO[i] + " ppm";
+//     }
+// }
+
+// // Bắt đầu cập nhật biểu đồ mỗi giây nếu chưa có
+// if (!chartIntervalCO) {
+//     chartIntervalCO = setInterval(() => {
+//         updateChartCO(CO_out);
+//     }, 1000);
+// }
+
+// // Bắt đầu cập nhật dữ liệu lịch sử mỗi giây nếu chưa có
+// if (!historyIntervalCO) {
+//     historyIntervalCO = setInterval(() => {
+//         updateHistoryDataCO(CO_out);
+//     }, 1000);
+// }
+
+
+
+//---------------------------------Report Excel-------------------------
+function exportVoltageToExcel() {
+    // Prepare chart data
+    const chartData = chart_voltage.data.datasets[0].data;
+    const chartLabels = chart_voltage.data.labels;
+
+    // Prepare historical voltage data
+    const historyData = [];
+    for (let i = 0; i < 86400; i++) {
+        if (time_voltage[i] && value_voltage[i] !== undefined) {
+            historyData.push([time_voltage[i], value_voltage[i]]);
+        }
+    }
+
+    // Create a new workbook and worksheets
+    const workbook = XLSX.utils.book_new();
+
+    // Chart Data Worksheet
+    const chartDataWorksheet = XLSX.utils.aoa_to_sheet([
+        ['Time', 'Voltage'],
+        ...chartLabels.map((label, index) => [label, chartData[index]])
+    ]);
+    XLSX.utils.book_append_sheet(workbook, chartDataWorksheet, 'Chart Data');
+
+    // Historical Data Worksheet
+    const historyDataWorksheet = XLSX.utils.aoa_to_sheet([
+        ['Time', 'Voltage'],
+        ...historyData
+    ]);
+    XLSX.utils.book_append_sheet(workbook, historyDataWorksheet, 'Historical Data');
+
+    // Save the workbook
+    XLSX.writeFile(workbook, 'VoltageData.xlsx');
+}
+
+
 
 var opts_CO = {
     angle: -0.2,
@@ -1726,7 +1936,8 @@ var chart_CO = new Chart(CO, {
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 3,
-            fill: false
+            fill: false,
+            pointRadius: 0
         }]
     },
     options: {
@@ -1773,6 +1984,14 @@ database.ref("Monitor system/Co concentration/data").on("value", function (snaps
     updateHistoryDataCO(CO_out);
 });
 
+function getArr(arr, val) {
+    arr.push(val);
+    if (arr.length > 360) {
+        arr.shift();
+    }
+    return arr;
+}
+
 function updateChartCO(CO_out) {
     var time = new Date().toLocaleTimeString();
     const data = getArr(chart_CO.data.datasets[0].data, CO_out);
@@ -1815,4 +2034,38 @@ if (!historyIntervalCO) {
     historyIntervalCO = setInterval(() => {
         updateHistoryDataCO(CO_out);
     }, 1000);
+}
+
+function exportCOToExcel() {
+    // Prepare chart data
+    const chartData = chart_CO.data.datasets[0].data;
+    const chartLabels = chart_CO.data.labels;
+
+    // Prepare historical CO data
+    const historyData = [];
+    for (let i = 0; i < time_CO.length; i++) {
+        if (time_CO[i] && value_CO[i] !== undefined) {
+            historyData.push([time_CO[i], value_CO[i]]);
+        }
+    }
+
+    // Create a new workbook and worksheets
+    const workbook = XLSX.utils.book_new();
+
+    // Chart Data Worksheet
+    const chartDataWorksheet = XLSX.utils.aoa_to_sheet([
+        ['Time', 'CO Level'],
+        ...chartLabels.map((label, index) => [label, chartData[index]])
+    ]);
+    XLSX.utils.book_append_sheet(workbook, chartDataWorksheet, 'Chart Data');
+
+    // Historical Data Worksheet
+    const historyDataWorksheet = XLSX.utils.aoa_to_sheet([
+        ['Time', 'CO Level'],
+        ...historyData
+    ]);
+    XLSX.utils.book_append_sheet(workbook, historyDataWorksheet, 'Historical Data');
+
+    // Save the workbook
+    XLSX.writeFile(workbook, 'COData.xlsx');
 }

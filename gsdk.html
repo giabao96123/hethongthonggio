@@ -63,8 +63,12 @@
                 <div id="tempAlert" class="temp-alert" style="display: none;">
                     <span id="tempAlertMessage">Cảnh báo: Nhiệt độ vượt quá 45°C!</span>
                 </div>
-                
-                
+                <audio id="loc_sound">
+                    <source src="hinh/canhbao2.mp3" type="audio/mpeg">
+                </audio>
+                <audio id="loc_sound1">
+                    <source src="hinh/canhbao2.mp3" type="audio/mpeg">
+                </audio>
                 
                 <!-- <div class="gsndr">
                     <h2 ><span id="nhietdoreturn"></span> °C </h2>
@@ -183,7 +187,7 @@
                         <label for="timeEnd">Time End:</label>
                         <input type="time" id="timeEnd" name="timeEnd">
             
-                        <button type="submit">Submit</button>
+                        <button type="submit">Save</button>
                     </form>
                 </div>
                 <!---------------------------------------------------- chức năng fan -------------------------------------------------------- -->                
@@ -288,9 +292,9 @@
                                             <label >Max Value:</label>
                                             <input type="number" list="topic2" id="Max_value">
                                             <datalist id="topic2">
-                                                <option value="30">
-                                                <option value="40">
-                                                <option value="50">
+                                                <option value="10">
+                                                <option value="20">
+                                                <option value="43">
                                             </datalist>
                                         </p>
                                         <p>
@@ -317,16 +321,16 @@
                                             <label >Set Point T°:</label>
                                             <input type="number" list="topic3" id="Set_pointD01">
                                             <datalist id="topic3">
-                                                <option value="30">
                                                 <option value="35">
                                                 <option value="40">
+                                                <option value="45">
                                             </datalist>
                                         </p>
                                         <p>
                                             <label >Set Point Co :</label>
                                             <input type="number"  list="topic10"id="Set_PointD02">
                                             <datalist id="topic10">
-                                                <option value="20">
+                                                <option value="30">
                                                 <option value="50">
                                                 <option value="100">
                                             </datalist>
@@ -398,7 +402,7 @@
             <div id="giamsatdienap">
 
                 <div id="sheet-voltage" >
-                    <p class="report" onclick="open_sheet()">Report</p>
+                    <p class="report" onclick="exportVoltageToExcel()">Report</p>
                     <table id="table-sheet-voltage">
                         <div class="body-sheet">
                             <tr class="title-col-sheet">
@@ -663,7 +667,7 @@
 <!-- nhietdo -->
 <div id="giamsatnhietdo">
     <div id="sheet-temperature" class="sheet">
-        <p class="report" onclick="open_sheet()">Report</p>
+        <p class="report" onclick="exportTemperatureToExcel()">Report</p>
         <table id="table-sheet-temperature" class="table-sheet">
             <div class="body-sheet">
                 <tr class="title-col-sheet">
@@ -716,7 +720,7 @@
 
 <div id="giamsatCO">
     <div id="sheet-CO" class="sheet">
-        <p class="report" onclick="open_sheet()">Report</p>
+        <p class="report" onclick="exportCOToExcel()">Report</p>
         <table id="table-sheet-CO" class="table-sheet">
             <div class="body-sheet">
                 <tr class="title-col-sheet">
@@ -769,7 +773,8 @@
 
 
         </div>
-    </div>  
+    </div> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script> 
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

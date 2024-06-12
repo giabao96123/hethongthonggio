@@ -26,7 +26,7 @@ body{
 
 #header {
     height: 40px;
-    background-color:#073f7e;
+    background-color:#105169;
     position: absolute;
     top: 0;
     right: 0;
@@ -49,7 +49,7 @@ body{
 
 #nav li a:hover {
     color: #fffc1e;
-    background-color: darkblue;
+    background-color: #105169;
 }
 
 #content {
@@ -69,7 +69,7 @@ body{
     margin-left: 180px;
     margin-right: 180px;
     border-radius: 15px;
-    border: 4px solid #073f7e;
+    border: 4px solid #105169;
 }
 
 #content .header2 img {
@@ -514,7 +514,7 @@ body{
     margin: 5px;
     padding: 5px 10px;
     color: white;
-    background: #074c95;
+    background: #105169;
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -533,7 +533,7 @@ body{
 } */
 .controlmode {
     width: 250px;
-    background: #074c95;
+    background: #105169;
     position: absolute;
     top: 200px;
     left: 40px;
@@ -549,8 +549,8 @@ body{
 
 .controlmode .headermode {
     background: white;
-    border: 2px solid #074c95;
-    color: #074c95;
+    border: 2px solid #105169;
+    color: #105169;
     text-align: center;
     font-size: 20px;
     margin: 5px 0; /* Khoảng cách giữa các phần tử */
@@ -612,7 +612,7 @@ input[type="time"] {
     align-items: center; /* Căn giữa theo chiều ngang */
     gap: 5px; /* Khoảng cách giữa các phần tử */
     width: 180px;
-    background: #074c95;
+    background: #105169;
     text-align: center;
     justify-content: center; /* Căn giữa theo chiều dọc */
     font-size: 20px;
@@ -706,7 +706,7 @@ input[type="time"] {
 .modal_fan{
     z-index: 3;
     background: rgba(0, 0, 0, 0.6);
-    border: 2px solid #074c95;
+    border: 2px solid #105169;
     /* border-radius: 10px; */
     position: absolute;
     top: 49.92%;
@@ -732,7 +732,7 @@ input[type="time"] {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    background: #074c95;
+    background: #105169;
     color: white;
     cursor: pointer;
     text-align: right;
@@ -740,7 +740,7 @@ input[type="time"] {
 }
 
 .modal_body #fan{
-    color: #074c95;
+    color: #105169;
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -941,8 +941,7 @@ input[type="time"] {
     margin-left: 70px;
     margin-right: 70px;
     border-radius: 9px;
-    border: 4px solid #073f7e;
-
+    border: 4px solid #105169
 }
 
 
@@ -1037,7 +1036,7 @@ input[type="time"] {
     margin-left: 70px;
     margin-right: 70px;
     border-radius: 9px;
-    border: 4px solid #073f7e;
+    border: 4px solid #105169;
 }
 .content-row-current{
     padding: 5px 10px;
@@ -1073,7 +1072,7 @@ input[type="time"] {
     margin-left: 70px;
     margin-right: 70px;
     border-radius: 9px;
-    border: 4px solid #073f7e;
+    border: 4px solid #105169;
 }
 #frequency-monitor{
     padding-top: 20px;
@@ -1102,7 +1101,7 @@ input[type="time"] {
     margin-left: 70px;
     margin-right: 70px;
     border-radius: 9px;
-    border: 4px solid #073f7e;
+    border: 4px solid #105169;
 }
 #speed-monitor{
     padding-top: 20px;
@@ -1131,7 +1130,7 @@ input[type="time"] {
     margin-left: 70px;
     margin-right: 70px;
     border-radius: 9px;
-    border: 4px solid #073f7e;
+    border: 4px solid #105169;
 }
 #airflow-monitor{
     padding-top: 20px;
@@ -1174,7 +1173,7 @@ input[type="time"] {
     justify-content: center;
     padding-left: 30px;
     font-size: 20px;
-    box-shadow: 0px 0px 5px #073f7e;
+    box-shadow: 0px 0px 5px #105169;
     transition: all 0.8s;
     border: 2px solid #3af13a; /* Màu xanh: #00ff00 */
 }
@@ -1191,7 +1190,7 @@ input[type="time"] {
     justify-content: center;
     padding-left: 20px;
     font-size: 20px;
-    box-shadow: 0px 0px 5px #073f7e;
+    box-shadow: 0px 0px 5px #105169;
     transition: all 0.8s;
     border: 2px solid #3af13a; /* Màu xanh: #00ff00 */
 }
@@ -1208,7 +1207,7 @@ input[type="time"] {
     justify-content: center;
     padding-left: 10px;
     font-size: 20px;
-    box-shadow: 0px 0px 5px #073f7e;
+    box-shadow: 0px 0px 5px #105169;
     transition: all 0.8s;
     border: 2px solid #3af13a; /* Màu xanh: #00ff00 */
 }
@@ -1225,7 +1224,7 @@ input[type="time"] {
     justify-content: center;
     padding-left: 10px;
     font-size: 20px;
-    box-shadow: 0px 0px 5px #073f7e;
+    box-shadow: 0px 0px 5px #105169;
     transition: all 0.8s;
     border: 2px solid #3af13a; /* Màu xanh: #00ff00 */
 }
@@ -1301,7 +1300,7 @@ input[type="time"] {
 } */
 
 .container1 {
-    background-color: #074c95;
+    background-color: #105169;
     position: absolute; /* Hoặc position: fixed; */
     top: 300px; /* Khoảng cách từ đỉnh */
     left: 1250px; /* Khoảng cách từ bên trái */
@@ -1344,12 +1343,12 @@ form {
  
 
 button {
-    padding: 10px 15px;
+    padding: 5px 10px;
+    border-radius: 10px;
     border: none;
-    border-radius: 3px;
     background-color: #28a745;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     align-self: center;
     width: 100px; /* Đặt chiều rộng cụ thể cho nút */
@@ -1387,7 +1386,7 @@ button:hover {
     margin-left: 70px;
     margin-right: 70px;
     border-radius: 9px;
-    border: 4px solid #073f7e;
+    border: 4px solid #105169;
 }
 #temperature-monitor{
     padding-top: 20px;
@@ -1417,7 +1416,7 @@ button:hover {
     margin-left: 70px;
     margin-right: 70px;
     border-radius: 9px;
-    border: 4px solid #073f7e;
+    border: 4px solid #105169;
 }
 #CO-monitor{
     padding-top: 20px;

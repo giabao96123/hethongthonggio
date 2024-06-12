@@ -160,7 +160,7 @@ database.ref("Monitor system/Co concentration/data").on("value", function(snapsh
     // Kiểm tra nồng độ CO và hiển thị hoặc ẩn alert tùy chỉnh
     var coAlert = document.getElementById("coAlert");
     var locSound = document.getElementById("loc_sound1");
-    if (PresSupply > 20) {
+    if (PresSupply > 27) {
         // Hiển thị alert nếu nồng độ CO vượt quá 50ppm
         coAlert.style.display = 'block';
         locSound.play();
